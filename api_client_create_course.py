@@ -28,7 +28,7 @@ courses_client = get_courses_client(authentication_user)
 create_file_request = CreateFileRequestDict(
     filename="hold.jpg",
     directory="courses",
-    upload_file="./testdata/files/hold.jpg"
+    upload_file="/Users/uladzimirrudnik/PycharmProjects/Python_API/testdata/files/hold.jpg"
 )
 create_file_response = files_client.create_file(create_file_request)
 print('Create file data:', create_file_response)

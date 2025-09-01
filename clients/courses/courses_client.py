@@ -8,7 +8,6 @@ from clients.private_http_builder import AuthenticationUserDict, get_private_htt
 from clients.users.private_users_client import User
 
 
-
 # Добавили описание структуры курса
 class Course(TypedDict):
     """
@@ -23,14 +22,11 @@ class Course(TypedDict):
     estimatedTime: str
     createdByUser: User  # Вложенная структура пользователя
 
-
-
 class GetCoursesQueryDict(TypedDict):
     """
     Описание структуры запроса на получение списка курсов.
     """
     userId: str
-
 
 class CreateCourseRequestDict(TypedDict):
     """
@@ -51,8 +47,6 @@ class CreateCourseResponseDict(TypedDict):
     """
     course: Course
 
-
-
 class UpdateCourseRequestDict(TypedDict):
     """
     Описание структуры запроса на обновление курса.
@@ -62,10 +56,6 @@ class UpdateCourseRequestDict(TypedDict):
     minScore: int | None
     description: str | None
     estimatedTime: str | None
-
-
-
-
 
 class CoursesClient(APIClient):
     """
