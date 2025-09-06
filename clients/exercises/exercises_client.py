@@ -3,58 +3,24 @@ from typing import TypedDict
 from httpx import Response
 
 from clients.api_client import APIClient
+from clients.exercises.exercises_schema import GetExercisesQueryDictSchema, CreateExercisesRequestDictSchema, \
+    UpdateExercisesRequestDictSchema, GetExercisesResponseDictSchema
 from clients.private_http_builder import get_private_http_client, AuthenticationUserSchema
 
-
-class GetExercisesQueryDict(TypedDict):
-    courseId: str
-
-class GetExercisesResponseDict(TypedDict):
-    id: str
-    title: str
-    courseId: str
-    maxScore: int
-    minScore: int
-    orderIndex: int
-    description: str
-    estimatedTime: str
-
-class AuthenticationUserDict(TypedDict):  # Структура данных пользователя для авторизации
-    email: str
-    password: str
-
-
-class CreateExercisesRequestDict(TypedDict):
-    title: str
-    courseId: str
-    maxScore: int
-    minScore: int
-    orderIndex: int
-    description: str
-    estimatedTime: str
-
-
-class UpdateExercisesRequestDict(TypedDict):
-    title: str | None
-    maxScore: int | None
-    minScore: int | None
-    orderIndex: int | None
-    description: str | None
-    estimatedTime: str | None
 
 
 class ExercisesClient(APIClient):
 
-    def get_exercises_api(self, query: GetExercisesQueryDict) -> Response:
+    def get_exercises_api(self, query: GetExercisesQueryDictSchema) -> Response:
         return self.get("/api/v1/exercises", params=query)
 
     def get_exercise_api(self, exercise_id: str) -> Response:
         return self.get(f"/api/v1/exercises{exercise_id}")
 
-    def create_exercises_api(self, request: CreateExercisesRequestDict) -> Response:
+    def create_exercises_api(self, request: CreateExercisesRequestDictSchema) -> Response:
         return self.post("/api/v1/exercises", json=request)
 
-    def update_exercises_api(self, exercise_id: str, request: UpdateExercisesRequestDict) -> Response:
+    def update_exercises_api(self, exercise_id: str, request: UpdateExercisesRequestDictSchema) -> Response:
         return self.patch(f"/api/v1/exercises{exercise_id}",json=request)
 
     def deleted_exercises_api(self, exercise_id: str) -> Response:
@@ -62,19 +28,19 @@ class ExercisesClient(APIClient):
 
 
 
-    def get_exercises(self, query: GetExercisesQueryDict) -> GetExercisesResponseDict:
+    def get_exercises(self, query: GetExercisesQueryDictSchema) -> GetExercisesResponseDictSchema:
         response = self.get_exercises_api(query)
         return response.json()
 
-    def get_exercise(self, exercise_id: str) -> GetExercisesResponseDict:
+    def get_exercise(self, exercise_id: str) -> GetExercisesResponseDictSchema:
         response = self.get_exercise_api(exercise_id)
         return response.json()
 
-    def create_exercise(self, request: CreateExercisesRequestDict) -> GetExercisesResponseDict:
+    def create_exercise(self, request: CreateExercisesRequestDictSchema) -> GetExercisesResponseDictSchema:
         response = self.create_exercises_api(request)
         return response.json()
 
-    def update_exercise(self, exercise_id: str, request: UpdateExercisesRequestDict) -> GetExercisesResponseDict:
+    def update_exercise(self, exercise_id: str, request: UpdateExercisesRequestDictSchema) -> GetExercisesResponseDictSchema:
         response = self.update_exercises_api(exercise_id, request)
         return response.json()
 

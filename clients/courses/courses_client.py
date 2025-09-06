@@ -5,9 +5,9 @@ from httpx import Response
 from clients.api_client import APIClient
 from clients.courses.courses_schema import GetCoursesQueryDictSchema, CreateCourseRequestDictSchema, \
     UpdateCourseRequestDictSchema, CreateCourseResponseDictSchema
-from clients.files.files_client import File
+#from clients.files.files_client import File
 from clients.private_http_builder import AuthenticationUserSchema, get_private_http_client
-from clients.users.private_users_client import User
+#from clients.users.private_users_client import User
 
 
 class CoursesClient(APIClient):
