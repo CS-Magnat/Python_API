@@ -41,7 +41,7 @@ class CoursesClient(APIClient):
         previewFileId, createdByUserId.
         :return: Ответ от сервера в виде объекта httpx.Response
         """
-        return self.post("/api/v1/courses", json=request)
+        return self.post("/api/v1/courses", json=request.model_dump(by_alias=True))
 
     def update_course_api(self, course_id: str, request: UpdateCourseRequestDictSchema) -> Response:
         """
@@ -51,7 +51,7 @@ class CoursesClient(APIClient):
         :param request: Словарь с title, maxScore, minScore, description, estimatedTime.
         :return: Ответ от сервера в виде объекта httpx.Response
         """
-        return self.patch(f"/api/v1/courses/{course_id}", json=request)
+        return self.patch(f"/api/v1/courses/{course_id}", json=request.model_dump(by_alias=True))
 
     def delete_course_api(self, course_id: str) -> Response:
         """

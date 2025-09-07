@@ -18,10 +18,10 @@ class ExercisesClient(APIClient):
         return self.get(f"/api/v1/exercises{exercise_id}")
 
     def create_exercises_api(self, request: CreateExercisesRequestDictSchema) -> Response:
-        return self.post("/api/v1/exercises", json=request)
+        return self.post("/api/v1/exercises", json=request.model_dump(by_alias=True))
 
     def update_exercises_api(self, exercise_id: str, request: UpdateExercisesRequestDictSchema) -> Response:
-        return self.patch(f"/api/v1/exercises{exercise_id}",json=request)
+        return self.patch(f"/api/v1/exercises{exercise_id}",json=request.model_dump(by_alias=True))
 
     def deleted_exercises_api(self, exercise_id: str) -> Response:
         return self.delete(f"/api/v1/exercises{exercise_id}")

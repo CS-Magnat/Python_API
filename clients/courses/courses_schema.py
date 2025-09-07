@@ -38,8 +38,8 @@ class CreateCourseRequestDictSchema(BaseModel):
     min_score: int = Field(alias="minScore")
     description: str
     estimated_time: str = Field(alias="estimatedTime")
-    preview_fileId: str = Field(alias="previewFileId")
-    created_by_userId: str = Field(alias="createdByUserId")
+    preview_file_id: str = Field(alias="previewFileId")
+    created_by_user_id: str = Field(alias="createdByUserId")
 
 # Добавили описание структуры запроса на создание курса
 class CreateCourseResponseDictSchema(BaseModel):
