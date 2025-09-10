@@ -10,13 +10,9 @@ public_users_client = get_public_users_client()
 
 # Инициализируем запрос на создание пользователя
 # Вместо CreateUserRequestDict используем CreateUserRequestSchema
-create_user_request = CreateUserRequestSchema(
-    email=fake.email(),
-    password="string",
-    last_name="string",  # Передаем аргументы в формате snake_case вместо camelCase
-    first_name="string",  # Передаем аргументы в формате snake_case вместо camelCase
-    middle_name="string"  # Передаем аргументы в формате snake_case вместо camelCase
-)
+
+# Больше нет необходимости передавать значения, они будут генерироваться автоматически
+create_user_request = CreateUserRequestSchema()
 # Отправляем POST запрос на создание пользователя
 # Используем метод create_user
 create_user_response = public_users_client.create_user(create_user_request)
