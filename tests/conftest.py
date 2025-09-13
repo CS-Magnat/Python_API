@@ -8,6 +8,10 @@ from clients.users.public_users_client import get_public_users_client, PublicUse
 from clients.users.users_schema import CreateUserRequestSchema, CreateUserResponseSchema, UserSchema
 
 # Модель для агрегации возвращаемых данных фикстурой function_user
+# удобный способ объединить запрос и ответ для пользователя в тестах, сохранив пароль для аутентификации
+
+# API не возвращает пароль (и это правильно с точки зрения безопасности), но в тестах он нужен для авторизации.
+# Фикстура должна содержать и request (с email и паролем), и response (без пароля)
 class UserFixture(BaseModel):
     request: CreateUserRequestSchema
     response: CreateUserResponseSchema
