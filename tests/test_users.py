@@ -30,3 +30,9 @@ def test_create_user(public_users_client: PublicUsersClient):# Использу�
     assert_create_user_response(request, response_data)
     # Проверяем, что тело ответа соответствует ожидаемой JSON-схеме
     validate_json_schema(response.json(), response_data.model_json_schema())
+
+
+@pytest.mark.users
+@pytest.mark.regression
+def test_get_user_me():
+    ...
