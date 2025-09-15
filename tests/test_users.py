@@ -1,13 +1,15 @@
 from http import HTTPStatus
 
+from clients.users.private_users_client import PrivateUsersClient
 from clients.users.public_users_client import PublicUsersClient
-from clients.users.users_schema import CreateUserRequestSchema, CreateUserResponseSchema
+from clients.users.users_schema import CreateUserRequestSchema, CreateUserResponseSchema, GetUserResponseSchema
+from tests.conftest import UserFixture
 # Импортируем функцию для валидации JSON Schema
 from tools.assertions.schema import validate_json_schema
 # Импортируем функцию проверки статус-кода
 from tools.assertions.base import assert_status_code
 # Импортируем функцию для проверки ответа создания юзера
-from tools.assertions.users import assert_create_user_response
+from tools.assertions.users import assert_create_user_response, assert_get_user_response
 import pytest  # Импортируем библиотеку pytest
 
 
@@ -34,5 +36,8 @@ def test_create_user(public_users_client: PublicUsersClient):# Использу�
 
 @pytest.mark.users
 @pytest.mark.regression
-def test_get_user_me():
-    ...
+def test_get_user_me(private_users_client: PrivateUsersClient, function_user: UserFixture):
+
+    response_user_me_api = private_users_client.get_user_me_api()
+    assert_status_code(response_user_me_api.status_code, HTTPStatus.OK)
+    assert_get_user_response(GetUserResponseSchema.model_validate_json(response_user_me_api.text), function_user.response)

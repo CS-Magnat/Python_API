@@ -54,6 +54,8 @@ def function_user(public_users_client: PublicUsersClient) -> UserFixture:
     response = public_users_client.create_user(request)
     return UserFixture(request=request, response=response)  # Возвращаем все нужные данные
 
+@pytest.fixture
 def private_users_client(function_user: UserFixture) -> PrivateUsersClient:
     return get_private_users_client(function_user.authentication_user)
+
 
