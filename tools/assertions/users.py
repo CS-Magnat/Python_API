@@ -24,8 +24,5 @@ def assert_user(actual: UserSchema, expected: UserSchema):
     assert_equal(actual.middle_name, expected.middle_name, "middle_name")
 
 def assert_get_user_response(get_user_response: GetUserResponseSchema, create_user_response: CreateUserResponseSchema):
-    assert_equal(create_user_response.user.id, get_user_response.id, "id")
-    assert_equal(create_user_response.user.email, get_user_response.email, "email")
-    assert_equal(create_user_response.user.last_name, get_user_response.last_name, "last_name")
-    assert_equal(create_user_response.user.first_name, get_user_response.first_name, "first_name")
-    assert_equal(create_user_response.user.middle_name, get_user_response.middle_name, "middle_name")
+    # Делегируем сравнение пользователей общей функции
+    assert_user(get_user_response.user, create_user_response.user)

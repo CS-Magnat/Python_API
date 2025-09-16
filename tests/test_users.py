@@ -39,5 +39,8 @@ def test_create_user(public_users_client: PublicUsersClient):# Использу�
 def test_get_user_me(private_users_client: PrivateUsersClient, function_user: UserFixture):
 
     response_user_me_api = private_users_client.get_user_me_api()
+    response_user_me_api_data = GetUserResponseSchema.model_validate_json(response_user_me_api.text)
+
     assert_status_code(response_user_me_api.status_code, HTTPStatus.OK)
     assert_get_user_response(GetUserResponseSchema.model_validate_json(response_user_me_api.text), function_user.response)
+    validate_json_schema(response_user_me_api.json(), response_user_me_api_data.model_json_schema())
