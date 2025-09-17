@@ -3,7 +3,7 @@ from http import HTTPStatus
 from clients.users.private_users_client import PrivateUsersClient
 from clients.users.public_users_client import PublicUsersClient
 from clients.users.users_schema import CreateUserRequestSchema, CreateUserResponseSchema, GetUserResponseSchema
-from tests.conftest import UserFixture
+from fixtures.users import UserFixture  # Заменяем импорт
 # Импортируем функцию для валидации JSON Schema
 from tools.assertions.schema import validate_json_schema
 # Импортируем функцию проверки статус-кода
