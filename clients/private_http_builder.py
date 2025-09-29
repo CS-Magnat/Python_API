@@ -4,14 +4,16 @@ from httpx import Client
 from clients.authentication.authentication_client import get_authentication_client
 # Импортируем модель LoginRequestSchema
 from clients.authentication.authentication_schema import LoginRequestSchema
+from functools import lru_cache  # Импортируем функцию для кеширования
 
 # Добавили суффикс Schema вместо Dict
-class AuthenticationUserSchema(BaseModel):  # Структура данных пользователя для авторизации # Наследуем от BaseModel вместо TypedDict
-    email: EmailStr
+class AuthenticationUserSchema(BaseModel, frozen=True):  # Добавили параметр frozen=True \ Структура данных пользователя для авторизации # Наследуем от BaseModel вместо TypedDict
+    email: str
     password: str
 
 
 # Создаем private builder
+@lru_cache(maxsize=None)  # Кешируем возвращаемое значение
 def get_private_http_client(user: AuthenticationUserSchema) -> Client:
     """
     Функция создаёт экземпляр httpx.Client с аутентификацией пользователя.
@@ -36,3 +38,5 @@ def get_private_http_client(user: AuthenticationUserSchema) -> Client:
         # Значения теперь извлекаем не по ключу, а через атрибуты
         headers = {"Authorization": f"Bearer {login_response.token.access_token}"}
     )
+
+
