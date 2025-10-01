@@ -4,7 +4,7 @@ from httpx import Response
 
 from clients.api_client import APIClient
 from clients.courses.courses_schema import GetCoursesQueryDictSchema, CreateCourseRequestSchema, \
-    UpdateCourseRequestDictSchema, CreateCourseResponseDictSchema
+    UpdateCourseRequestDictSchema, CreateCourseResponseSchema
 #from clients.files.files_client import File
 from clients.private_http_builder import AuthenticationUserSchema, get_private_http_client
 #from clients.users.private_users_client import User
@@ -64,9 +64,9 @@ class CoursesClient(APIClient):
 
 
     # Добавили новый метод
-    def create_course(self, request: CreateCourseRequestSchema) -> CreateCourseResponseDictSchema:
+    def create_course(self, request: CreateCourseRequestSchema) -> CreateCourseResponseSchema:
         response = self.create_course_api(request)
-        return CreateCourseResponseDictSchema.model_validate_json(response.text)
+        return CreateCourseResponseSchema.model_validate_json(response.text)
 
 
 # Добавляем builder для CoursesClient

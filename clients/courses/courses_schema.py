@@ -50,7 +50,7 @@ class CreateCourseRequestSchema(BaseModel):
     created_by_user_id: str = Field(alias="createdByUserId", default_factory=fake.uuid4)
 
 # Добавили описание структуры запроса на создание курса
-class CreateCourseResponseDictSchema(BaseModel):
+class CreateCourseResponseSchema(BaseModel):
     """
     Описание структуры ответа создания курса.
     """

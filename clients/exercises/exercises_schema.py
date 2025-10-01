@@ -16,7 +16,7 @@ class GetExercisesResponseDictSchema(BaseModel):
     course_id: str = Field(alias="courseId")
     max_score: int = Field(alias="maxScore")
     min_score: int = Field(alias="minScore")
-    order_index: int = Field(alias="minScore")
+    order_index: int = Field(alias="orderIndex")
     description: str
     estimated_time: str = Field(alias="estimatedTime")
 
