@@ -101,3 +101,6 @@ def assert_file_not_found_response(actual: InternalErrorResponseSchema):
     expected = InternalErrorResponseSchema(details="File not found")
     # Используем ранее созданную функцию для проверки внутренней ошибки
     assert_internal_error_response(actual, expected)
+
+def assert_get_file_with_incorrect_file_id_response(actual):
+    ...

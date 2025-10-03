@@ -4,7 +4,7 @@ from httpx import Response
 
 from clients.api_client import APIClient
 from clients.courses.courses_schema import GetCoursesQueryDictSchema, CreateCourseRequestSchema, \
-    UpdateCourseRequestDictSchema, CreateCourseResponseSchema
+    CreateCourseResponseSchema, UpdateCourseRequestSchema
 #from clients.files.files_client import File
 from clients.private_http_builder import AuthenticationUserSchema, get_private_http_client
 #from clients.users.private_users_client import User
@@ -43,7 +43,7 @@ class CoursesClient(APIClient):
         """
         return self.post("/api/v1/courses", json=request.model_dump(by_alias=True))
 
-    def update_course_api(self, course_id: str, request: UpdateCourseRequestDictSchema) -> Response:
+    def update_course_api(self, course_id: str, request: UpdateCourseRequestSchema) -> Response:
         """
         Метод обновления курса.
 
