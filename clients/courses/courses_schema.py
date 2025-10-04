@@ -20,7 +20,7 @@ class CourseSchema(BaseModel):
     estimated_time: str = Field(alias="estimatedTime")
     createdByUser: UserSchema  # Вложенная структура пользователя
 
-class GetCoursesQueryDictSchema(BaseModel):
+class GetCoursesQuerySchema(BaseModel):
     """
     Описание структуры запроса на получение списка курсов.
     """
@@ -78,3 +78,10 @@ class UpdateCourseResponseSchema(BaseModel):
     Описание структуры ответа обновления курса.
     """
     course: CourseSchema
+
+
+class GetCoursesResponseSchema(BaseModel):
+    """
+    Описание структуры ответа на получение списка курсов.
+    """
+    courses: list[CourseSchema]

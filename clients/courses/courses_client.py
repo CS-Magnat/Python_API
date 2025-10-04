@@ -3,7 +3,7 @@ from typing import TypedDict
 from httpx import Response
 
 from clients.api_client import APIClient
-from clients.courses.courses_schema import GetCoursesQueryDictSchema, CreateCourseRequestSchema, \
+from clients.courses.courses_schema import GetCoursesQuerySchema, CreateCourseRequestSchema, \
     CreateCourseResponseSchema, UpdateCourseRequestSchema
 #from clients.files.files_client import File
 from clients.private_http_builder import AuthenticationUserSchema, get_private_http_client
@@ -15,7 +15,7 @@ class CoursesClient(APIClient):
     Клиент для работы с /api/v1/courses
     """
 
-    def get_courses_api(self, query: GetCoursesQueryDictSchema) -> Response:
+    def get_courses_api(self, query: GetCoursesQuerySchema) -> Response:
         """
         Метод получения списка курсов.
 
