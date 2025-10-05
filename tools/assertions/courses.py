@@ -39,8 +39,8 @@ def assert_course(actual: CourseSchema, expected: CourseSchema):
     assert_equal(actual.estimated_time, expected.estimated_time, "estimated_time")
 
     # Проверяем вложенные сущности
-    assert_file(actual.preview_file, expected.preview_file)
-    assert_user(actual.created_by_user, expected.created_by_user)
+    assert_file(actual.previewFile, expected.previewFile)
+    assert_user(actual.createdByUser, expected.createdByUser)
 
 
 def assert_get_courses_response(
