@@ -4,8 +4,9 @@ import pytest
 
 from clients.courses.courses_client import CoursesClient
 from clients.courses.courses_schema import UpdateCourseRequestSchema, UpdateCourseResponseSchema, GetCoursesQuerySchema, \
-    GetCoursesResponseSchema
+    GetCoursesResponseSchema, CreateCourseRequestSchema
 from fixtures.courses import CourseFixture
+from fixtures.files import FileFixture
 from fixtures.users import UserFixture
 from tools.assertions.base import assert_status_code
 from tools.assertions.courses import assert_update_course_response, assert_get_courses_response
@@ -53,3 +54,7 @@ class TestCourses:
 
         # Проверяем соответствие JSON-ответа схеме
         validate_json_schema(response.json(), response_data.model_json_schema())
+
+    def test_create_course(self, function_file: FileFixture, function_user: UserFixture):
+        request = CreateCourseRequestSchema(preview_file_id=function_file.preview_file_id, created_by_user_id=function_user.response.user.id)
+        response  = CoursesClient.create_course_api(request)
