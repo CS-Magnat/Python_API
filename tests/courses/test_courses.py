@@ -4,12 +4,13 @@ import pytest
 
 from clients.courses.courses_client import CoursesClient
 from clients.courses.courses_schema import UpdateCourseRequestSchema, UpdateCourseResponseSchema, GetCoursesQuerySchema, \
-    GetCoursesResponseSchema, CreateCourseRequestSchema
+    GetCoursesResponseSchema, CreateCourseRequestSchema, CreateCourseResponseSchema
 from fixtures.courses import CourseFixture
 from fixtures.files import FileFixture
 from fixtures.users import UserFixture
 from tools.assertions.base import assert_status_code
-from tools.assertions.courses import assert_update_course_response, assert_get_courses_response
+from tools.assertions.courses import assert_update_course_response, assert_get_courses_response, \
+    assert_create_course_response
 from tools.assertions.schema import validate_json_schema
 
 
@@ -55,6 +56,12 @@ class TestCourses:
         # Проверяем соответствие JSON-ответа схеме
         validate_json_schema(response.json(), response_data.model_json_schema())
 
-    def test_create_course(self, function_file: FileFixture, function_user: UserFixture):
-        request = CreateCourseRequestSchema(preview_file_id=function_file.preview_file_id, created_by_user_id=function_user.response.user.id)
-        response  = CoursesClient.create_course_api(request)
+    def test_create_course(self, courses_client: CoursesClient, function_file: FileFixture, function_user: UserFixture):
+        request = CreateCourseRequestSchema(preview_file_id=function_file.response.file.id, created_by_user_id=function_user.response.user.id)
+        create_course_response  = courses_client.create_course_api(request)
+        assert_status_code(create_course_response.status_code, HTTPStatus.OK)
+
+        response_data = CreateCourseResponseSchema.model_validate_json(create_course_response.text)
+        validate_json_schema(create_course_response.json(), response_data.model_json_schema())
+
+        assert_create_course_response(request, response_data)

@@ -1,5 +1,5 @@
 from clients.courses.courses_schema import UpdateCourseRequestSchema, UpdateCourseResponseSchema, CourseSchema, \
-    GetCoursesResponseSchema, CreateCourseResponseSchema
+    GetCoursesResponseSchema, CreateCourseResponseSchema, CreateCourseRequestSchema
 from tools.assertions.base import assert_equal, assert_length
 from tools.assertions.files import assert_file
 from tools.assertions.users import assert_user
@@ -58,3 +58,13 @@ def assert_get_courses_response(
 
     for index, create_course_response in enumerate(create_course_responses):
         assert_course(get_courses_response.courses[index], create_course_response.course)
+
+def assert_create_course_response(actual: CreateCourseRequestSchema, expected: CreateCourseResponseSchema):
+    assert_equal(actual.title, expected.course.title, "title")
+    assert_equal(actual.max_score, expected.course.max_score, "max_score")
+    assert_equal(actual.min_score, expected.course.min_score, "min_score")
+    assert_equal(actual.description, expected.course.description, "description")
+    assert_equal(actual.estimated_time, expected.course.estimated_time, "estimated_time")
+
+    assert_equal(expected.course.previewFile.id, actual.preview_file_id, "preview_file_id")
+    assert_equal(expected.course.createdByUser.id, actual.created_by_user_id, "created_by_user_id")
