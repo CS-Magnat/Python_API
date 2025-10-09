@@ -3,6 +3,19 @@ from pydantic import BaseModel, Field, EmailStr, ConfigDict
 from tools.fakers import fake
 
 
+
+class ExercisesSchema(BaseModel):
+    model_config = ConfigDict(populate_by_name=True)
+
+    title: str
+    course_id: str = Field(alias="courseId")
+    max_score: int = Field(alias="maxScore")
+    min_score: int = Field(alias="minScore")
+    order_index: int = Field(alias="orderIndex")
+    description: str
+    estimated_time: str = Field(alias="estimatedTime")
+
+
 class GetExercisesQueryDictSchema(BaseModel):
     model_config = ConfigDict(populate_by_name=True)
 
@@ -19,6 +32,12 @@ class GetExercisesResponseDictSchema(BaseModel):
     order_index: int = Field(alias="orderIndex")
     description: str
     estimated_time: str = Field(alias="estimatedTime")
+
+
+class CreateExerciseResponseSchema(BaseModel):
+
+    exercise: ExercisesSchema
+
 
 class AuthenticationUserDictSchema(BaseModel):  # Структура данных пользователя для авторизации
     email: EmailStr
