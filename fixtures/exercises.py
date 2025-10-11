@@ -2,7 +2,7 @@ import pytest
 from pydantic import BaseModel
 
 from clients.exercises.exercises_client import get_exercises_client, ExercisesClient
-from clients.exercises.exercises_schema import CreateExerciseRequestSchema, GetExercisesResponseDictSchema
+from clients.exercises.exercises_schema import CreateExerciseRequestSchema, GetExercisesResponseSchema
 from clients.private_http_builder import AuthenticationUserSchema
 from fixtures.courses import CourseFixture
 
@@ -10,7 +10,7 @@ from fixtures.courses import CourseFixture
 # удобный способ объединить запрос и ответ для упражнения в тестах
 class ExerciseFixture(BaseModel):
     request: CreateExerciseRequestSchema # Схема запроса создания упражнения
-    response: GetExercisesResponseDictSchema # Схема ответа с данными упражнения
+    response: GetExercisesResponseSchema # Схема ответа с данными упражнения
 
 # Создаем новый API клиент для работы с упражнениями
 @pytest.fixture

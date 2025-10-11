@@ -21,7 +21,7 @@ class GetExercisesQueryDictSchema(BaseModel):
 
     course_id: str = Field(alias = "courseId")
 
-class GetExercisesResponseDictSchema(BaseModel):
+class GetExercisesResponseSchema(BaseModel):
     model_config = ConfigDict(populate_by_name=True)
 
     id: str

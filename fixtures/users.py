@@ -29,12 +29,10 @@ class UserFixture(BaseModel):
         return AuthenticationUserSchema(email=self.email, password=self.password)
 
 
-
 @pytest.fixture  # Объявляем фикстуру, по умолчанию скоуп function
 def public_users_client() -> PublicUsersClient:  # Аннотируем возвращаемое фикстурой значение
     # Создаем новый API клиент для работы с публичным API пользователей
     return get_public_users_client()
-
 
 # Фикстура для создания пользователя
 @pytest.fixture
@@ -47,3 +45,4 @@ def function_user(public_users_client: PublicUsersClient) -> UserFixture:
 @pytest.fixture
 def private_users_client(function_user: UserFixture) -> PrivateUsersClient:
     return get_private_users_client(function_user.authentication_user)
+
