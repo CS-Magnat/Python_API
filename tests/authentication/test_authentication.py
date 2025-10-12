@@ -1,7 +1,7 @@
 from http import HTTPStatus
 
 import pytest
-
+import allure  # Импортируем allure
 from clients.authentication.authentication_client import AuthenticationClient
 from clients.authentication.authentication_schema import LoginRequestSchema, LoginResponseSchema
 from clients.users.public_users_client import PublicUsersClient
@@ -14,6 +14,7 @@ from tools.assertions.schema import validate_json_schema
 @pytest.mark.authentication
 @pytest.mark.regression
 class TestAuthentication:
+    @allure.title("Login with correct email and password")  # Добавили заголовок
     def test_login(
             self,
             function_user: UserFixture,  # Используем фикстуру для создания пользователя

@@ -36,7 +36,7 @@ class GetExercisesResponseSchema(BaseModel):
 
 class CreateExerciseResponseSchema(BaseModel):
 
-    exercise: ExercisesSchema
+    exercise: GetExercisesResponseSchema
 
 
 class AuthenticationUserDictSchema(BaseModel):  # Структура данных пользователя для авторизации

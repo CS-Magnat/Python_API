@@ -2,20 +2,20 @@ import pytest
 from pydantic import BaseModel
 
 from clients.exercises.exercises_client import get_exercises_client, ExercisesClient
-from clients.exercises.exercises_schema import CreateExerciseRequestSchema, GetExercisesResponseSchema
-from clients.private_http_builder import AuthenticationUserSchema
+from clients.exercises.exercises_schema import CreateExerciseRequestSchema, CreateExerciseResponseSchema
 from fixtures.courses import CourseFixture
+from fixtures.users import UserFixture
 
 # Модель для агрегации возвращаемых данных фикстурой function_exercise
 # удобный способ объединить запрос и ответ для упражнения в тестах
 class ExerciseFixture(BaseModel):
     request: CreateExerciseRequestSchema # Схема запроса создания упражнения
-    response: GetExercisesResponseSchema # Схема ответа с данными упражнения
+    response: CreateExerciseResponseSchema # Схема ответа с данными упражнения
 
 # Создаем новый API клиент для работы с упражнениями
 @pytest.fixture
-def exercises_client(user: AuthenticationUserSchema) -> ExercisesClient:
-    return get_exercises_client(user)
+def exercises_client(function_user: UserFixture) -> ExercisesClient:  # Изменено с user на function_user
+    return get_exercises_client(function_user.authentication_user)
 
 # Используем фикстуры function_course и exercises_client для создания упражнения
 @pytest.fixture

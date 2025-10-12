@@ -2,6 +2,7 @@ from http import HTTPStatus
 
 from clients.users.private_users_client import PrivateUsersClient
 from clients.users.public_users_client import PublicUsersClient
+import allure  # Импортируем библиотеку allure
 from clients.users.users_schema import CreateUserRequestSchema, CreateUserResponseSchema, GetUserResponseSchema
 from fixtures.users import UserFixture  # Заменяем импорт
 # Импортируем функцию для валидации JSON Schema
@@ -19,6 +20,7 @@ from tools.fakers import fake
 @pytest.mark.regression  # Добавили маркировку regression
 class TestUsers:
     @pytest.mark.parametrize('email', ["mail.ru", "gmail.com", "example.com"])
+    @allure.title("Create user")  # Добавляем человекочитаемый заголовок
     def test_create_user(self, email: str, public_users_client: PublicUsersClient):# Используем фикстуру API клиента
 
         # Формируем тело запроса на создание пользователя
@@ -37,7 +39,7 @@ class TestUsers:
         # Проверяем, что тело ответа соответствует ожидаемой JSON-схеме
         validate_json_schema(response.json(), response_data.model_json_schema())
 
-
+    @allure.title("Get user me")  # Добавляем человекочитаемый заголовок
     def test_get_user_me(self, private_users_client: PrivateUsersClient, function_user: UserFixture):
 
         response_user_me_api = private_users_client.get_user_me_api()
