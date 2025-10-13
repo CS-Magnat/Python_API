@@ -7,12 +7,14 @@ from clients.authentication.authentication_schema import LoginRequestSchema, Log
 from clients.users.public_users_client import PublicUsersClient
 from clients.users.users_schema import CreateUserRequestSchema
 from fixtures.users import UserFixture  # Заменяем импорт
+from tools.allure.tags import AllureTag  # Импортируем enum с тегами
 from tools.assertions.authentication import assert_login_response
 from tools.assertions.base import assert_status_code
 from tools.assertions.schema import validate_json_schema
 
 @pytest.mark.authentication
 @pytest.mark.regression
+@allure.tag(AllureTag.REGRESSION, AllureTag.AUTHENTICATION)  # Добавили теги
 class TestAuthentication:
     @allure.title("Login with correct email and password")  # Добавили заголовок
     def test_login(
