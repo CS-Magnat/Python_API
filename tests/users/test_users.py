@@ -5,6 +5,12 @@ from clients.users.public_users_client import PublicUsersClient
 import allure  # Импортируем библиотеку allure
 from clients.users.users_schema import CreateUserRequestSchema, CreateUserResponseSchema, GetUserResponseSchema
 from fixtures.users import UserFixture  # Заменяем импорт
+from tools.allure.epics import AllureEpic  # Импортируем enum AllureEpic
+from tools.allure.features import AllureFeature  # Импортируем enum AllureFeature
+from tools.allure.stories import AllureStory  # Импортируем enum AllureStory
+from allure_commons.types import Severity  # Импортируем enum Severity из Allure
+
+from tools.allure.tags import AllureTag
 # Импортируем функцию для валидации JSON Schema
 from tools.assertions.schema import validate_json_schema
 # Импортируем функцию проверки статус-кода
@@ -18,8 +24,16 @@ from tools.fakers import fake
 
 @pytest.mark.users  # Добавили маркировку users
 @pytest.mark.regression  # Добавили маркировку regression
+@allure.epic(AllureEpic.LMS)  # Добавили epic
+@allure.feature(AllureFeature.USERS)  # Добавили feature
+@allure.parent_suite(AllureEpic.LMS)  # allure.parent_suite == allure.epic
+@allure.suite(AllureFeature.USERS)  # allure.suite == allure.feature
 class TestUsers:
     @pytest.mark.parametrize('email', ["mail.ru", "gmail.com", "example.com"])
+    @allure.tag(AllureTag.CREATE_ENTITY)
+    @allure.severity(Severity.BLOCKER)  # Добавили severity
+    @allure.story(AllureStory.CREATE_ENTITY)  # Добавили story
+    @allure.sub_suite(AllureStory.CREATE_ENTITY)  # allure.sub_suite == allure.story
     @allure.title("Create user")  # Добавляем человекочитаемый заголовок
     def test_create_user(self, email: str, public_users_client: PublicUsersClient):# Используем фикстуру API клиента
 
@@ -39,6 +53,10 @@ class TestUsers:
         # Проверяем, что тело ответа соответствует ожидаемой JSON-схеме
         validate_json_schema(response.json(), response_data.model_json_schema())
 
+    @allure.tag(AllureTag.GET_ENTITY)
+    @allure.severity(Severity.CRITICAL)  # Добавили severity
+    @allure.story(AllureStory.GET_ENTITY)  # Добавили story
+    @allure.sub_suite(AllureStory.GET_ENTITY)  # allure.sub_suite == allure.story
     @allure.title("Get user me")  # Добавляем человекочитаемый заголовок
     def test_get_user_me(self, private_users_client: PrivateUsersClient, function_user: UserFixture):
 

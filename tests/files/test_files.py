@@ -3,6 +3,10 @@ from http import HTTPStatus
 import pytest
 import allure  # Импортируем allure
 from tools.allure.tags import AllureTag  # Импортируем enum с тегами
+from tools.allure.epics import AllureEpic  # Импортируем enum AllureEpic
+from tools.allure.features import AllureFeature  # Импортируем enum AllureFeature
+from tools.allure.stories import AllureStory  # Импортируем enum AllureStory
+from allure_commons.types import Severity  # Импортируем enum Severity из Allure
 from clients.errors_schema import ValidationErrorResponseSchema, InternalErrorResponseSchema
 from clients.files.files_client import FilesClient
 from clients.files.files_schema import CreateFileRequestSchema, CreateFileResponseSchema, GetFileResponseSchema
@@ -16,8 +20,15 @@ from tools.assertions.schema import validate_json_schema
 @pytest.mark.files
 @pytest.mark.regression
 @allure.tag(AllureTag.FILES, AllureTag.REGRESSION)  # Добавили теги
+@allure.epic(AllureEpic.LMS)  # Добавили epic
+@allure.feature(AllureFeature.FILES)  # Добавили feature
+@allure.parent_suite(AllureEpic.LMS)  # allure.parent_suite == allure.epic
+@allure.suite(AllureFeature.FILES)  # allure.suite == allure.feature
 class TestFiles:
     @allure.tag(AllureTag.CREATE_ENTITY)  # Добавили тег
+    @allure.story(AllureStory.CREATE_ENTITY)  # Добавили story
+    @allure.sub_suite(AllureStory.CREATE_ENTITY)  # allure.sub_suite == allure.story
+    @allure.severity(Severity.BLOCKER)  # Добавили severity
     @allure.title("Create file")  # Добавили заголовок
     def test_create_file(self, files_client: FilesClient):
         request = CreateFileRequestSchema(upload_file="/Users/uladzimirrudnik/PycharmProjects/Python_API/testdata/files/hold.jpg")
@@ -29,8 +40,12 @@ class TestFiles:
 
         validate_json_schema(response.json(), response_data.model_json_schema())
 
-    @allure.title("Get file")  # Добавили заголовок
+
+    @allure.story(AllureStory.GET_ENTITY)  # Добавили story
+    @allure.sub_suite(AllureStory.GET_ENTITY)  # allure.sub_suite == allure.story
     @allure.tag(AllureTag.GET_ENTITY)  # Добавили тег
+    @allure.severity(Severity.BLOCKER)  # Добавили severity
+    @allure.title("Get file")  # Добавили заголовок
     def test_get_file(self, files_client: FilesClient, function_file: FileFixture):
         response = files_client.get_file_api(function_file.response.file.id)
         response_data = GetFileResponseSchema.model_validate_json(response.text)
@@ -41,6 +56,9 @@ class TestFiles:
         validate_json_schema(response.json(), response_data.model_json_schema())
 
     @allure.tag(AllureTag.VALIDATE_ENTITY)  # Добавили тег
+    @allure.story(AllureStory.VALIDATE_ENTITY)  # Добавили story
+    @allure.sub_suite(AllureStory.VALIDATE_ENTITY)  # allure.sub_suite == allure.story
+    @allure.severity(Severity.NORMAL)  # Добавили severity
     @allure.title("Create file with empty filename")  # Добавили заголовок
     def test_create_file_with_empty_filename(self, files_client: FilesClient):
         request = CreateFileRequestSchema(
@@ -58,8 +76,12 @@ class TestFiles:
         # Дополнительная проверка структуры JSON, чтобы убедиться, что схема валидационного ответа не изменилась
         validate_json_schema(response.json(), response_data.model_json_schema())
 
-    @allure.title("Create file with empty directory")  # Добавили заголовок
+
     @allure.tag(AllureTag.VALIDATE_ENTITY)  # Добавили тег
+    @allure.story(AllureStory.VALIDATE_ENTITY)  # Добавили story
+    @allure.sub_suite(AllureStory.VALIDATE_ENTITY)  # allure.sub_suite == allure.story
+    @allure.severity(Severity.NORMAL)  # Добавили severity
+    @allure.title("Create file with empty directory")  # Добавили заголовок
     def test_create_file_with_empty_directory(self, files_client: FilesClient):
         request = CreateFileRequestSchema(
             directory="",
@@ -77,6 +99,9 @@ class TestFiles:
         validate_json_schema(response.json(), response_data.model_json_schema())
 
     @allure.tag(AllureTag.DELETE_ENTITY)  # Добавили тег
+    @allure.story(AllureStory.DELETE_ENTITY)  # Добавили story
+    @allure.sub_suite(AllureStory.DELETE_ENTITY)  # allure.sub_suite == allure.story
+    @allure.severity(Severity.NORMAL)  # Добавили severity
     @allure.title("Delete file")  # Добавили заголовок
     def test_delete_file(self, files_client: FilesClient, function_file: FileFixture):
         # 1. Удаляем файл
@@ -97,6 +122,9 @@ class TestFiles:
         validate_json_schema(get_response.json(), get_response_data.model_json_schema())
 
     @allure.tag(AllureTag.VALIDATE_ENTITY)  # Добавили тег
+    @allure.story(AllureStory.VALIDATE_ENTITY)  # Добавили story
+    @allure.sub_suite(AllureStory.VALIDATE_ENTITY)  # allure.sub_suite == allure.story
+    @allure.severity(Severity.NORMAL)  # Добавили severity
     @allure.title("Get file with incorrect file id")  # Добавили заголовок
     def test_get_file_with_incorrect_file_id(self, files_client: FilesClient):
         response = files_client.get_file_api("incorrect-file-id")
