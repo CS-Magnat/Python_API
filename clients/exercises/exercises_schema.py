@@ -16,10 +16,18 @@ class ExercisesSchema(BaseModel):
     estimated_time: str = Field(alias="estimatedTime")
 
 
-class GetExercisesQueryDictSchema(BaseModel):
+class ExerciseSchema(BaseModel):
+    """Схема для одного упражнения"""
     model_config = ConfigDict(populate_by_name=True)
 
-    course_id: str = Field(alias = "courseId")
+    id: str
+    title: str
+    course_id: str = Field(alias="courseId")
+    max_score: int = Field(alias="maxScore")
+    min_score: int = Field(alias="minScore")
+    order_index: int = Field(alias="orderIndex")
+    description: str
+    estimated_time: str = Field(alias="estimatedTime")
 
 class GetExercisesResponseSchema(BaseModel):
     model_config = ConfigDict(populate_by_name=True)
@@ -34,15 +42,33 @@ class GetExercisesResponseSchema(BaseModel):
     estimated_time: str = Field(alias="estimatedTime")
 
 
-class CreateExerciseResponseSchema(BaseModel):
-
-    exercise: GetExercisesResponseSchema
+class GetExercisesQuerySchema(BaseModel):
+    model_config = ConfigDict(populate_by_name=True)
+    course_id: str = Field(alias = "courseId")
 
 
 class AuthenticationUserDictSchema(BaseModel):  # Структура данных пользователя для авторизации
     email: EmailStr
     password: str
 
+
+class GetExercisesListResponseSchema(BaseModel):
+    """Схема для получения списка упражнений"""
+    model_config = ConfigDict(populate_by_name=True)
+    exercises: list[ExercisesSchema]
+
+
+class GetExerciseResponseSchema(BaseModel):
+    """Схема для получения одного упражнения"""
+    exercise: ExerciseSchema
+"""Обе схемы ссылаются на одну ExerciseSchema, потому что и создание, и получение упражнения возвращают 
+одинаковую структуру данных - одно упражнение с теми же полями."""
+
+class CreateExerciseResponseSchema(BaseModel):
+    """Схема ответа создания упражнения"""
+    exercise: ExerciseSchema
+"""Обе схемы ссылаются на одну ExerciseSchema, потому что и создание, и получение упражнения возвращают 
+одинаковую структуру данных - одно упражнение с теми же полями."""
 
 class CreateExerciseRequestSchema(BaseModel):
     model_config = ConfigDict(populate_by_name=True)
@@ -65,3 +91,6 @@ class UpdateExerciseRequestSchema(BaseModel):
     order_index: int | None = Field(alias="orderIndex", default_factory=fake.integer)
     description: str | None = Field(default_factory=fake.text)
     estimated_time: str | None = Field(alias="estimatedTime", default_factory=fake.estimated_time)
+
+class UpdateExerciseResponseSchema(BaseModel):
+    exercise: ExerciseSchema
