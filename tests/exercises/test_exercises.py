@@ -7,7 +7,7 @@ from clients.authentication.authentication_schema import LoginRequestSchema
 from clients.errors_schema import InternalErrorResponseSchema
 from clients.exercises.exercises_client import ExercisesClient, get_exercises_client
 from clients.exercises.exercises_schema import GetExerciseResponseSchema, CreateExerciseRequestSchema, \
-    CreateExerciseResponseSchema, UpdateExerciseResponseSchema, UpdateExerciseRequestSchema
+    CreateExerciseResponseSchema, UpdateExerciseResponseSchema, UpdateExerciseRequestSchema, GetExercisesQuerySchema
 from allure_commons.types import Severity  # Импортируем enum Severity из Allure
 
 from httpx_get_user import get_user_response_data
@@ -120,5 +120,11 @@ class TestExercises:
             function_course: CourseFixture,
             function_exercise: ExerciseFixture
     ):
-        ...
+        query = GetExercisesQuerySchema(course_id=function_course.response.course.id)
+
+        get_response = exercises_client.get_exercises_api(query)
+
+        assert_status_code(get_response.status_code, HTTPStatus.OK)
+
+
 
