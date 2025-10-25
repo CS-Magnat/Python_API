@@ -7,7 +7,8 @@ from clients.authentication.authentication_schema import LoginRequestSchema
 from clients.errors_schema import InternalErrorResponseSchema
 from clients.exercises.exercises_client import ExercisesClient, get_exercises_client
 from clients.exercises.exercises_schema import GetExerciseResponseSchema, CreateExerciseRequestSchema, \
-    CreateExerciseResponseSchema, UpdateExerciseResponseSchema, UpdateExerciseRequestSchema, GetExercisesQuerySchema
+    CreateExerciseResponseSchema, UpdateExerciseResponseSchema, UpdateExerciseRequestSchema, GetExercisesQuerySchema, \
+    GetExercisesResponseSchema, GetExercisesListResponseSchema
 from allure_commons.types import Severity  # Импортируем enum Severity из Allure
 
 from httpx_get_user import get_user_response_data
@@ -23,7 +24,7 @@ from fixtures.users import UserFixture
 from tools.assertions.base import assert_status_code
 from tools.assertions.errors import assert_internal_error_response
 from tools.assertions.exercises import assert_create_exercise_response, assert_exercise, \
-    assert_update_exercise_response, assert_exercise_not_found_response
+    assert_update_exercise_response, assert_exercise_not_found_response, assert_get_exercises_response
 from tools.assertions.schema import validate_json_schema
 
 
@@ -120,11 +121,19 @@ class TestExercises:
             function_course: CourseFixture,
             function_exercise: ExerciseFixture
     ):
-        query = GetExercisesQuerySchema(course_id=function_course.response.course.id)
 
-        get_response = exercises_client.get_exercises_api(query)
+
+        query = GetExercisesQuerySchema(course_id=function_course.response.course.id)
+        get_response = exercises_client.get_exercises_api(query.model_dump(by_alias=True))
+        get_response_data = GetExercisesListResponseSchema.model_validate_json(get_response.text)
 
         assert_status_code(get_response.status_code, HTTPStatus.OK)
+
+        assert_get_exercises_response(get_response_data.exercises, [function_exercise.response])
+        validate_json_schema(get_response.json(), get_response_data.model_json_schema())
+
+
+
 
 
 
