@@ -66,7 +66,7 @@ class TestExercises:
         get_exercise_response_data = GetExerciseResponseSchema.model_validate_json(get_exercise_response.text)
 
         assert_status_code(get_exercise_response.status_code, HTTPStatus.OK)
-        assert_exercise(get_exercise_response_data, function_exercise.response) #перепроверить, по факту сравниваем схемы, зачем, если проверку они проходят при трансфармации в схему
+        assert_exercise(get_exercise_response_data.exercise, function_exercise.response.exercise) #перепроверить, по факту сравниваем схемы, зачем, если проверку они проходят при трансфармации в схему
         validate_json_schema(get_exercise_response.json(), get_exercise_response_data.model_json_schema())
 
 
@@ -130,7 +130,8 @@ class TestExercises:
         assert_status_code(get_response.status_code, HTTPStatus.OK)
 
         assert_get_exercises_response(get_response_data.exercises, [function_exercise.response])
-        validate_json_schema(get_response.json(), get_response_data.model_json_schema())
+        validate_json_schema(get_response.json(), GetExercisesListResponseSchema.model_json_schema())
+
 
 
 
