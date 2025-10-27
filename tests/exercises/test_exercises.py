@@ -129,7 +129,7 @@ class TestExercises:
 
         assert_status_code(get_response.status_code, HTTPStatus.OK)
 
-        assert_get_exercises_response(get_response_data.exercises, [function_exercise.response])
+        assert_get_exercises_response(get_response_data, [function_exercise.response])
         validate_json_schema(get_response.json(), GetExercisesListResponseSchema.model_json_schema())
 
 

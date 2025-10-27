@@ -5,6 +5,11 @@ from clients.authentication.authentication_client import get_authentication_clie
 # Импортируем модель LoginRequestSchema
 from clients.authentication.authentication_schema import LoginRequestSchema
 from functools import lru_cache  # Импортируем функцию для кеширования
+from clients.event_hooks import curl_event_hook  # Импортируем event hook
+
+
+
+
 
 # Добавили суффикс Schema вместо Dict
 class AuthenticationUserSchema(BaseModel, frozen=True):  # Добавили параметр frozen=True \ Структура данных пользователя для авторизации # Наследуем от BaseModel вместо TypedDict
@@ -36,7 +41,9 @@ def get_private_http_client(user: AuthenticationUserSchema) -> Client:
         base_url="http://localhost:8000",
         # Добавляем заголовок авторизации
         # Значения теперь извлекаем не по ключу, а через атрибуты
-        headers = {"Authorization": f"Bearer {login_response.token.access_token}"}
+        headers = {"Authorization": f"Bearer {login_response.token.access_token}"},
+        # Добавляем event hook для запрос
+        event_hooks = {"request": [curl_event_hook]}
     )
 
 

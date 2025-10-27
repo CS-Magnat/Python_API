@@ -59,6 +59,7 @@ def assert_exercise_not_found_response(actual: InternalErrorResponseSchema):
 #     assert_exercise(actual, expected)  #задание части 3, не совсем понятно зачем надо и без него работает
 
 @allure.step("Check get exercises response")
-def assert_get_exercises_response(actual: list[ExercisesSchema], expected: list[CreateExerciseResponseSchema]):
+def assert_get_exercises_response(actual: GetExercisesListResponseSchema, expected: list[CreateExerciseResponseSchema]):
+    assert_length(actual.exercises, expected, "courses")
     for index, expected_exercise in enumerate(expected):
-        assert_exercise(actual[index], expected_exercise.exercise)
+        assert_exercise(actual.exercises[index], expected_exercise.exercise)
