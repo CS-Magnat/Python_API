@@ -7,6 +7,7 @@ from clients.private_http_builder import AuthenticationUserSchema
 from clients.users.public_users_client import get_public_users_client
 # Вместо CreateUserRequestDict импортируем CreateUserRequestSchema
 from clients.users.users_schema import CreateUserRequestSchema
+from config import settings
 
 public_users_client = get_public_users_client()
 
@@ -26,7 +27,7 @@ courses_client = get_courses_client(authentication_user)
 # Загружаем файл
 # Вместо CreateFileRequestDict используем CreateFileRequestSchema
 # Автоматическая генерация данных, кроме необходимых параметров
-create_file_request = CreateFileRequestSchema(upload_file="/Users/uladzimirrudnik/PycharmProjects/Python_API/testdata/files/hold.jpg")
+create_file_request = CreateFileRequestSchema(upload_file=settings.test_data.image_png_file)
 create_file_response = files_client.create_file(create_file_request)
 print('Create file data:', create_file_response)
 

@@ -1,5 +1,6 @@
 import httpx
 
+from config import settings
 from tools.fakers import fake
 
 # Создаем пользователя
@@ -30,7 +31,7 @@ create_file_headers = {
 create_file_response = httpx.post(
     "http://localhost:8000/api/v1/files",
     data={"filename": "hold.jpg", "directory": "courses"},
-    files={"upload_file": open('./testdata/files/hold.jpg', 'rb')},
+    files={"upload_file": open(settings.test_data.image_png_file, 'rb')},
     headers=create_file_headers
     )
 create_file_response_data = create_file_response.json()
