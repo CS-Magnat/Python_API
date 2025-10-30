@@ -5,7 +5,10 @@ from clients.authentication.authentication_client import get_authentication_clie
 # Импортируем модель LoginRequestSchema
 from clients.authentication.authentication_schema import LoginRequestSchema
 from functools import lru_cache  # Импортируем функцию для кеширования
-from clients.event_hooks import curl_event_hook  # Импортируем event hook
+
+# Импортируем хуки логирования запроса и ответа
+from clients.event_hooks import curl_event_hook, log_request_event_hook, log_response_event_hook # Импортируем event hook
+
 from config import settings  # Импортируем настройки
 
 
@@ -40,7 +43,10 @@ def get_private_http_client(user: AuthenticationUserSchema) -> Client:
         timeout=settings.http_client.timeout,  # Используем значение таймаута из настроек
         base_url=settings.http_client.client_url,  # Используем значение адреса сервера из настроек
         headers = {"Authorization": f"Bearer {login_response.token.access_token}"}, # Добавляем заголовок авторизации / Значения теперь извлекаем не по ключу, а через атрибуты
-        event_hooks = {"request": [curl_event_hook]} # Добавляем event hook для запрос
+        event_hooks = {
+            "request": [curl_event_hook, log_request_event_hook],  # Логируем исходящие HTTP-запросы # Добавляем event hook для запрос
+            "response": [log_response_event_hook]  # Логируем полученные HTTP-ответы
+        }
     )
 
 
