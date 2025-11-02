@@ -1,4 +1,6 @@
-from pydantic import BaseModel, HttpUrl, FilePath
+from typing import Self
+
+from pydantic import BaseModel, HttpUrl, FilePath, DirectoryPath
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -17,6 +19,7 @@ class TestDataConfig(BaseModel):
 
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
+        extra='allow',  # Разрешаем дополнительные переменные
         env_file=".env",  # Указываем, из какого файла читать настройки
         env_file_encoding="utf-8",  # Указываем кодировку файла
         env_nested_delimiter=".",  # Указываем разделитель для вложенных переменных
@@ -24,6 +27,21 @@ class Settings(BaseSettings):
 
     test_data: TestDataConfig
     http_client: HTTPClientConfig
+    allure_results_dir: DirectoryPath  # Добавили новое поле
 
-# Инициализируем настройки
-settings = Settings()
+
+    # Добавили метод initialize
+    @classmethod
+    def initialize(cls) -> Self:  # Возвращает экземпляр класса Settings
+        allure_results_dir = DirectoryPath("./allure-results")  # Создаем объект пути к папке
+        allure_results_dir.mkdir(exist_ok=True)  # Создаем папку allure-results, если она не существует
+
+        # Передаем allure_results_dir в инициализацию настроек
+        return Settings(allure_results_dir=allure_results_dir)
+
+
+# Теперь вызываем метод initialize
+settings = Settings.initialize()
+
+# # Инициализируем настройки
+# settings = Settings()

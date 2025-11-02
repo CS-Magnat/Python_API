@@ -4,4 +4,6 @@ pytest_plugins = (
     "fixtures.files",  # Добавляем фикстуры для работы с файлами
     "fixtures.courses",  # Добавляем фикстуры для работы с курсами
     "fixtures.exercises",  # Добавляем фикстуры для работы с exercises
+
+    "fixtures.allure"  # Добавили плагин
 )
