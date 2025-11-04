@@ -79,7 +79,7 @@ class TestExercises:
     def test_update_exercise( self, exercises_client: ExercisesClient, function_exercise: ExerciseFixture):
 
         request = UpdateExerciseRequestSchema()
-        response = exercises_client.update_exercises_api(function_exercise.response.exercise.id, request)
+        response = exercises_client.update_exercise_api(function_exercise.response.exercise.id, request)
         response_data = UpdateExerciseResponseSchema.model_validate_json(response.text)
 
         assert_status_code(response.status_code, HTTPStatus.OK)
@@ -96,7 +96,7 @@ class TestExercises:
     @allure.title("Delete exercise")  # Добавили заголовок
     def test_delete_exercise(self, exercises_client: ExercisesClient, function_exercise: ExerciseFixture):
 
-        delete_response = exercises_client.delete_exercises_api(function_exercise.response.exercise.id)
+        delete_response = exercises_client.delete_exercise_api(function_exercise.response.exercise.id)
         assert_status_code(delete_response.status_code, HTTPStatus.OK)
 
         get_response = exercises_client.get_exercise_api(function_exercise.response.exercise.id)
