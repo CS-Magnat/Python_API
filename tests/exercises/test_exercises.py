@@ -11,7 +11,7 @@ from clients.exercises.exercises_schema import GetExerciseResponseSchema, Create
     GetExercisesResponseSchema, GetExercisesListResponseSchema
 from allure_commons.types import Severity  # Импортируем enum Severity из Allure
 
-from httpx_get_user import get_user_response_data
+#from httpx_get_user import get_user_response_data
 from tools.allure.epics import AllureEpic  # Импортируем enum AllureEpic
 from tools.allure.features import AllureFeature  # Импортируем enum AllureFeature
 from tools.allure.stories import AllureStory  # Импортируем enum AllureStory
