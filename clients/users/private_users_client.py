@@ -31,7 +31,7 @@ class PrivateUsersClient(APIClient):
         return self.get(f"{APIRoutes.USERS}/{user_id}")
 
 
-    @allure.step("Update user by id {user_id}")  # Добавили allure шаг
+    @allure.step("Update user by id {user_id}")
     def update_user_api(self, user_id: str, request: UpdateUserRequestSchema) -> Response:
         """
         Метод обновления пользователя по идентификатору.
@@ -43,7 +43,7 @@ class PrivateUsersClient(APIClient):
         return self.patch(f"{APIRoutes.USERS}/{user_id}", json=request.model_dump(by_alias=True))
 
 
-    @allure.step("Delete user by id {user_id}")  # Добавили allure шаг
+    @allure.step("Delete user by id {user_id}")
     def delete_user_api(self, user_id: str) -> Response:
         """
         Метод удаления пользователя по идентификатору.
@@ -55,6 +55,12 @@ class PrivateUsersClient(APIClient):
 
 
     def get_user(self, user_id: str) -> GetUserResponseSchema:
+        """
+        Получает пользователя по идентификатору и возвращает валидированную схему ответа.
+
+        :param user_id: Идентификатор пользователя.
+        :return: Валидированная схема ответа GetUserResponseSchema.
+        """
         response = self.get_user_api(user_id)
         return GetUserResponseSchema.model_validate_json(response.text)
 

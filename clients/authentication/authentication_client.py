@@ -39,6 +39,12 @@ class AuthenticationClient(APIClient):
 
 
     def login(self, request: LoginRequestSchema) -> LoginResponseSchema:
+        """
+        Выполняет аутентификацию пользователя и возвращает валидированную схему ответа.
+
+        :param request: Данные для аутентификации (email и password).
+        :return: Валидированная схема ответа LoginResponseSchema с токенами.
+        """
         response = self.login_api(request)
         return LoginResponseSchema.model_validate_json(response.text)
 

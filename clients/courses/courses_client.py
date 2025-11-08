@@ -73,6 +73,12 @@ class CoursesClient(APIClient):
 
 
     def create_course(self, request: CreateCourseRequestSchema) -> CreateCourseResponseSchema:
+        """
+        Создает курс и возвращает валидированную схему ответа.
+
+        :param request: Данные для создания курса.
+        :return: Валидированная схема ответа CreateCourseResponseSchema.
+        """
         response = self.create_course_api(request)
         return CreateCourseResponseSchema.model_validate_json(response.text)
 

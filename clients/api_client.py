@@ -7,7 +7,18 @@ import allure
 
 
 class APIClient:
+    """
+    Базовый клиент для выполнения HTTP-запросов к API.
+
+    Предоставляет методы для выполнения GET, POST, PATCH и DELETE запросов
+    с использованием httpx.Client.
+    """
     def __init__(self, client: Client):
+        """
+        Инициализирует APIClient с HTTP-клиентом.
+
+        :param client: Экземпляр httpx.Client для выполнения запросов.
+        """
         self.client = client
 
 

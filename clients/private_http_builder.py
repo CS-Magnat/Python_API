@@ -10,6 +10,12 @@ from config import settings
 
 
 class AuthenticationUserSchema(BaseModel, frozen=True):
+    """
+    Схема для хранения данных аутентификации пользователя.
+
+    Используется для передачи учетных данных при создании
+    аутентифицированного HTTP-клиента.
+    """
     email: str
     password: str
 

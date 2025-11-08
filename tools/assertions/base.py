@@ -54,7 +54,7 @@ def assert_is_true(actual: Any, name: str):
     :raises AssertionError: Если фактическое значение ложно.
     """
 
-    logger.info(f'Check that "{name}" is true')  # Логируем проверку
+    logger.info(f'Check that "{name}" is true')
     assert actual, (
         f'Incorrect value: "{name}". '
         f'Expected true value but got: {actual}'
@@ -71,7 +71,7 @@ def assert_length(actual: Sized, expected: Sized, name: str):
     :raises AssertionError: Если длины не совпадают.
     """
     with allure.step(f"Check that length of {name} equals to {len(expected)}"):
-        logger.info(f'Check that length of "{name}" equals to {len(expected)}')  # Логируем проверку
+        logger.info(f'Check that length of "{name}" equals to {len(expected)}')
 
         assert len(actual) == len(expected), (
             f'Incorrect object length: "{name}". '

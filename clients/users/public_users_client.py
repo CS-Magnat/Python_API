@@ -6,6 +6,8 @@ from clients.users.users_schema import CreateUserResponseSchema, CreateUserReque
 from tools.routes import APIRoutes
 
 
+
+
 class PublicUsersClient(APIClient):
     """
     Клиент для работы с /api/v1/users
@@ -22,6 +24,12 @@ class PublicUsersClient(APIClient):
 
 
     def create_user(self, request: CreateUserRequestSchema) -> CreateUserResponseSchema:
+        """
+        Создает пользователя и возвращает валидированную схему ответа.
+
+        :param request: Данные для создания пользователя.
+        :return: Валидированная схема ответа CreateUserResponseSchema.
+        """
         response = self.create_user_api(request)
         return CreateUserResponseSchema.model_validate_json(response.text)
 

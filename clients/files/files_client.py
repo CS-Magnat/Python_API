@@ -47,7 +47,6 @@ class FilesClient(APIClient):
         :param file_id: Идентификатор файла.
         :return: Ответ от сервера в виде объекта httpx.Response
         """
-        # Вместо /api/v1/files используем APIRoutes.FILES
         return self.delete(f"{APIRoutes.FILES}/{file_id}")
 
 
