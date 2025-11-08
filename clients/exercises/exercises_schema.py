@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field, EmailStr, ConfigDict
+from pydantic import BaseModel, Field, ConfigDict
 
 from tools.fakers import fake
 
@@ -29,6 +29,7 @@ class ExerciseSchema(BaseModel):
     description: str
     estimated_time: str = Field(alias="estimatedTime")
 
+
 class GetExercisesResponseSchema(BaseModel):
     model_config = ConfigDict(populate_by_name=True)
 
@@ -45,11 +46,6 @@ class GetExercisesResponseSchema(BaseModel):
 class GetExercisesQuerySchema(BaseModel):
     model_config = ConfigDict(populate_by_name=True)
     course_id: str = Field(alias = "courseId")
-
-
-class AuthenticationUserDictSchema(BaseModel):  # Структура данных пользователя для авторизации
-    email: EmailStr
-    password: str
 
 
 class GetExercisesListResponseSchema(BaseModel):
@@ -69,6 +65,7 @@ class CreateExerciseResponseSchema(BaseModel):
     exercise: ExerciseSchema
 """Обе схемы ссылаются на одну ExerciseSchema, потому что и создание, и получение упражнения возвращают 
 одинаковую структуру данных - одно упражнение с теми же полями."""
+
 
 class CreateExerciseRequestSchema(BaseModel):
     model_config = ConfigDict(populate_by_name=True)
@@ -91,6 +88,7 @@ class UpdateExerciseRequestSchema(BaseModel):
     order_index: int | None = Field(alias="orderIndex", default_factory=fake.integer)
     description: str | None = Field(default_factory=fake.text)
     estimated_time: str | None = Field(alias="estimatedTime", default_factory=fake.estimated_time)
+
 
 class UpdateExerciseResponseSchema(BaseModel):
     exercise: ExerciseSchema

@@ -45,6 +45,11 @@ jobs:
           JWT_REFRESH_TOKEN_EXPIRE: 5184000 # Время жизни refresh token (в секундах)
         run: uvicorn main:app --host 0.0.0.0 --port 8000 --app-dir ./Python_API & # Запускаем сервер с указанными переменными окружения
 
+      # 5.1. Ожидание готовности сервера
+      - name: Wait for server to be ready
+        run: |
+          timeout 30 bash -c 'until curl -s http://localhost:8000/docs > /dev/null; do sleep 1; done' || exit 1
+
       # 6. Шаг для установки всех зависимостей проекта
       - name: Install dependencies
         run: |
@@ -77,16 +82,6 @@ jobs:
         with:
           name: allure-results  # Имя артефакта, который мы сохранили в джобе run-tests
           path: allure-results  # Путь, куда будут загружены результаты
-
-
-#      # 3. Шаг для получения истории отчётов Allure, если она существует
-#      - name: Get Allure history
-#        uses: actions/checkout@v4  # Опять клонируем репозиторий, чтобы получить историю отчётов
-#        if: always()  # Всегда выполняем, независимо от успеха или неудачи предыдущих шагов
-#        continue-on-error: true  # Если здесь возникнет ошибка, workflow всё равно продолжит выполнение
-#        with:
-#          ref: gh-pages  # Указываем ветку gh-pages для получения отчётов
-#          path: gh-pages  # Указываем путь для сохранения отчётов
 
       # 3. Шаг для генерации и отображения отчёта Allure
       - name: Generates Allure Report with history

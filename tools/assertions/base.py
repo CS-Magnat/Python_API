@@ -1,15 +1,12 @@
-
 from typing import Any, Sized
-import allure  # Импортируем allure
+import allure
+from tools.logger import get_logger
 
-from tools.logger import get_logger  # Импортируем функцию для создания логгера
-
-logger = get_logger("BASE_ASSERTIONS")  # Создаем логгер с именем "BASE_ASSERTIONS"
-
+logger = get_logger("BASE_ASSERTIONS")
 
 
 
-@allure.step("Check that response status code equals to {expected}")  # Добавили allure шаг
+@allure.step("Check that response status code equals to {expected}")
 def assert_status_code(actual: int, expected: int):
     """
     Проверяет, что фактический статус-код ответа соответствует ожидаемому.
@@ -18,9 +15,7 @@ def assert_status_code(actual: int, expected: int):
     :param expected: Ожидаемый статус-код.
     :raises AssertionError: Если статус-коды не совпадают.
     """
-
-    logger.info(f"Check that response status code equals to {expected}")  # Логируем проверку
-
+    logger.info(f"Check that response status code equals to {expected}")
     assert actual == expected, (
         f'Incorrect response status code. '
         f'Expected status code: {expected}. '
@@ -28,7 +23,8 @@ def assert_status_code(actual: int, expected: int):
     )
 
 
-@allure.step("Check that {name} equals to {expected}")  # Добавили allure шаг
+
+@allure.step("Check that {name} equals to {expected}")
 def assert_equal(actual: Any, expected: Any, name: str):
     """
     Проверяет, что фактическое значение равно ожидаемому.
@@ -39,8 +35,7 @@ def assert_equal(actual: Any, expected: Any, name: str):
     :raises AssertionError: Если фактическое значение не равно ожидаемому.
     """
 
-    logger.info(f'Check that "{name}" equals to {expected}')  # Логируем проверку
-
+    logger.info(f'Check that "{name}" equals to {expected}')
     assert actual == expected, (
         f'Incorrect value: "{name}". '
         f'Expected value: {expected}. '
@@ -49,7 +44,7 @@ def assert_equal(actual: Any, expected: Any, name: str):
 
 
 
-@allure.step("Check that {name} is true")  # Добавили allure шаг
+@allure.step("Check that {name} is true")
 def assert_is_true(actual: Any, name: str):
     """
     Проверяет, что фактическое значение является истинным.
@@ -60,7 +55,6 @@ def assert_is_true(actual: Any, name: str):
     """
 
     logger.info(f'Check that "{name}" is true')  # Логируем проверку
-
     assert actual, (
         f'Incorrect value: "{name}". '
         f'Expected true value but got: {actual}'
@@ -76,7 +70,6 @@ def assert_length(actual: Sized, expected: Sized, name: str):
     :param expected: Ожидаемый объект.
     :raises AssertionError: Если длины не совпадают.
     """
-    # Добавили allure шаг
     with allure.step(f"Check that length of {name} equals to {len(expected)}"):
         logger.info(f'Check that length of "{name}" equals to {len(expected)}')  # Логируем проверку
 

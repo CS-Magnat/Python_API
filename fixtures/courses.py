@@ -1,10 +1,11 @@
 import pytest
 from pydantic import BaseModel
-
 from clients.courses.courses_client import CoursesClient, get_courses_client
 from clients.courses.courses_schema import CreateCourseRequestSchema, CreateCourseResponseSchema
 from fixtures.files import FileFixture
 from fixtures.users import UserFixture
+
+
 
 
 class CourseFixture(BaseModel):

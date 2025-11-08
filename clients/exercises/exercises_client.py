@@ -1,11 +1,10 @@
 import allure
 from httpx import Response
-
 from clients.api_client import APIClient
 from clients.exercises.exercises_schema import GetExercisesQuerySchema, CreateExerciseRequestSchema, \
     UpdateExerciseRequestSchema, GetExercisesResponseSchema, CreateExerciseResponseSchema
 from clients.private_http_builder import get_private_http_client, AuthenticationUserSchema
-from tools.routes import APIRoutes  # Импортируем enum APIRoutes
+from tools.routes import APIRoutes
 
 class ExercisesClient(APIClient):
 

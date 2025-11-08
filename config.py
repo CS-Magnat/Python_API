@@ -1,5 +1,4 @@
 from typing import Self
-
 from pydantic import BaseModel, HttpUrl, FilePath, DirectoryPath
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
@@ -27,7 +26,7 @@ class Settings(BaseSettings):
 
     test_data: TestDataConfig
     http_client: HTTPClientConfig
-    allure_results_dir: DirectoryPath  # Добавили новое поле
+    allure_results_dir: DirectoryPath
 
 
     # Добавили метод initialize
@@ -42,6 +41,3 @@ class Settings(BaseSettings):
 
 # Теперь вызываем метод initialize
 settings = Settings.initialize()
-
-# # Инициализируем настройки
-# settings = Settings()
