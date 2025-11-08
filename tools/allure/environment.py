@@ -6,11 +6,11 @@ from config import settings
 
 def create_allure_environment_file():
     """
-    Создает файл environment.properties для Allure отчета.
+    Creates environment.properties file for Allure report
 
-    Собирает информацию о настройках приложения, операционной системе
-    и версии Python, затем записывает в файл environment.properties
-    в директории allure-results.
+    Collects information about application settings, operating system
+    and Python version, then writes to environment.properties file
+    in allure-results directory
     """
     items = [f'{key}={value}' for key, value in settings.model_dump().items()]
 

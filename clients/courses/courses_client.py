@@ -10,15 +10,15 @@ from tools.routes import APIRoutes
 
 class CoursesClient(APIClient):
     """
-    Клиент для работы с /api/v1/courses
+    Client for working with /api/v1/courses
     """
     @allure.step("Get courses")
     def get_courses_api(self, query: GetCoursesQuerySchema) -> Response:
         """
-        Метод получения списка курсов.
+        Method for getting list of courses
 
-        :param query: Словарь с userId.
-        :return: Ответ от сервера в виде объекта httpx.Response
+        :param query: Dictionary with userId
+        :return: Server response as httpx.Response object
         """
         return self.get(APIRoutes.COURSES, params=query.model_dump(by_alias=True))
 
@@ -26,10 +26,10 @@ class CoursesClient(APIClient):
     @allure.step("Get course by id {course_id}")
     def get_course_api(self, course_id: str) -> Response:
         """
-        Метод получения курса.
+        Method for getting course
 
-        :param course_id: Идентификатор курса.
-        :return: Ответ от сервера в виде объекта httpx.Response
+        :param course_id: Course identifier
+        :return: Server response as httpx.Response object
         """
         return self.get(f"{APIRoutes.COURSES}/{course_id}")
 
@@ -37,11 +37,11 @@ class CoursesClient(APIClient):
     @allure.step("Create course")
     def create_course_api(self, request: CreateCourseRequestSchema) -> Response:
         """
-        Метод создания курса.
+        Method for creating course
 
-        :param request: Словарь с title, maxScore, minScore, description, estimatedTime, 
-        previewFileId, createdByUserId.
-        :return: Ответ от сервера в виде объекта httpx.Response
+        :param request: Dictionary with title, maxScore, minScore, description, estimatedTime, 
+        previewFileId, createdByUserId
+        :return: Server response as httpx.Response object
         """
         return self.post(APIRoutes.COURSES, json=request.model_dump(by_alias=True))
 
@@ -49,11 +49,11 @@ class CoursesClient(APIClient):
     @allure.step("Update course by id {course_id}")
     def update_course_api(self, course_id: str, request: UpdateCourseRequestSchema) -> Response:
         """
-        Метод обновления курса.
+        Method for updating course
 
-        :param course_id: Идентификатор курса.
-        :param request: Словарь с title, maxScore, minScore, description, estimatedTime.
-        :return: Ответ от сервера в виде объекта httpx.Response
+        :param course_id: Course identifier
+        :param request: Dictionary with title, maxScore, minScore, description, estimatedTime
+        :return: Server response as httpx.Response object
         """
         return self.patch(
             f"{APIRoutes.COURSES}/{course_id}",
@@ -64,20 +64,20 @@ class CoursesClient(APIClient):
     @allure.step("Delete course by id {course_id}")
     def delete_course_api(self, course_id: str) -> Response:
         """
-        Метод удаления курса.
+        Method for deleting course
 
-        :param course_id: Идентификатор курса.
-        :return: Ответ от сервера в виде объекта httpx.Response
+        :param course_id: Course identifier
+        :return: Server response as httpx.Response object
         """
         return self.delete(f"{APIRoutes.COURSES}/{course_id}")
 
 
     def create_course(self, request: CreateCourseRequestSchema) -> CreateCourseResponseSchema:
         """
-        Создает курс и возвращает валидированную схему ответа.
+        Creates course and returns validated response schema
 
-        :param request: Данные для создания курса.
-        :return: Валидированная схема ответа CreateCourseResponseSchema.
+        :param request: Data for creating course
+        :return: Validated response schema CreateCourseResponseSchema
         """
         response = self.create_course_api(request)
         return CreateCourseResponseSchema.model_validate_json(response.text)
@@ -85,8 +85,8 @@ class CoursesClient(APIClient):
 
 def get_courses_client(user: AuthenticationUserSchema) -> CoursesClient:
     """
-    Функция создаёт экземпляр CoursesClient с уже настроенным HTTP-клиентом.
+    Creates an instance of CoursesClient with pre-configured HTTP client
 
-    :return: Готовый к использованию CoursesClient.
+    :return: Ready-to-use CoursesClient
     """
     return CoursesClient(client=get_private_http_client(user))

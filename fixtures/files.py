@@ -10,9 +10,9 @@ from fixtures.users import UserFixture
 
 class FileFixture(BaseModel):
     """
-    Фикстура для хранения данных файла.
+    Fixture for storing file data
 
-    Содержит запрос на создание файла и ответ от сервера.
+    Contains file creation request and server response
     """
     request: CreateFileRequestSchema
     response: CreateFileResponseSchema
@@ -21,10 +21,10 @@ class FileFixture(BaseModel):
 @pytest.fixture
 def files_client(function_user: UserFixture) -> FilesClient:
     """
-    Фикстура для создания клиента файлов с аутентификацией пользователя.
+    Fixture for creating files client with user authentication
 
-    :param function_user: Фикстура пользователя для аутентификации.
-    :return: Настроенный FilesClient для работы с файлами.
+    :param function_user: User fixture for authentication
+    :return: Configured FilesClient for working with files
     """
     return get_files_client(function_user.authentication_user)
 
@@ -32,10 +32,10 @@ def files_client(function_user: UserFixture) -> FilesClient:
 @pytest.fixture
 def function_file(files_client: FilesClient) -> FileFixture:
     """
-    Фикстура для создания файла в рамках тестовой функции.
+    Fixture for creating file within test function
 
-    :param files_client: Клиент для работы с файлами.
-    :return: Фикстура с данными созданного файла.
+    :param files_client: Client for working with files
+    :return: Fixture with created file data
     """
     request = CreateFileRequestSchema(upload_file=settings.test_data.image_png_file)
     response = files_client.create_file(request)

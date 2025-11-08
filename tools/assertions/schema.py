@@ -10,11 +10,11 @@ logger = get_logger("SCHEMA_ASSERTIONS")
 @allure.step("Validate JSON schema")
 def validate_json_schema(instance: Any, schema: dict) -> None:
     """
-    Проверяет, соответствует ли JSON-объект (instance) заданной JSON-схеме (schema).
+    Checks if JSON object (instance) matches given JSON schema (schema)
 
-    :param instance: JSON-данные, которые нужно проверить.
-    :param schema: Ожидаемая JSON-schema.
-    :raises jsonschema.exceptions.ValidationError: Если instance не соответствует schema.
+    :param instance: JSON data to validate
+    :param schema: Expected JSON schema
+    :raises jsonschema.exceptions.ValidationError: If instance doesn't match schema
     """
     logger.info("Validating JSON schema")
 

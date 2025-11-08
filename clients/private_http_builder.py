@@ -11,10 +11,10 @@ from config import settings
 
 class AuthenticationUserSchema(BaseModel, frozen=True):
     """
-    Схема для хранения данных аутентификации пользователя.
+    Schema for storing user authentication data
 
-    Используется для передачи учетных данных при создании
-    аутентифицированного HTTP-клиента.
+    Used to pass credentials when creating
+    an authenticated HTTP client
     """
     email: str
     password: str
@@ -24,10 +24,10 @@ class AuthenticationUserSchema(BaseModel, frozen=True):
 @lru_cache(maxsize=None)
 def get_private_http_client(user: AuthenticationUserSchema) -> Client:
     """
-    Функция создаёт экземпляр httpx.Client с аутентификацией пользователя.
+    Creates an instance of httpx.Client with user authentication
 
-    :param user: Объект AuthenticationUserSchema с email и паролем пользователя.
-    :return: Готовый к использованию объект httpx.Client с установленным заголовком Authorization.
+    :param user: AuthenticationUserSchema object with user email and password
+    :return: Ready-to-use httpx.Client object with Authorization header set
     """
     authentication_client = get_authentication_client()
     login_request = LoginRequestSchema(email=user.email, password=user.password)

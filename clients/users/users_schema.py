@@ -6,7 +6,7 @@ from tools.fakers import fake
 
 class UserSchema(BaseModel):
     """
-    Описание структуры пользователя.
+    User structure description
     """
     model_config = ConfigDict(populate_by_name=True)
 
@@ -19,7 +19,7 @@ class UserSchema(BaseModel):
 
 class CreateUserRequestSchema(BaseModel):
     """
-    Описание структуры запроса на создание пользователя.
+    User creation request structure description
     """
     model_config = ConfigDict(populate_by_name=True)
 
@@ -32,14 +32,14 @@ class CreateUserRequestSchema(BaseModel):
 
 class CreateUserResponseSchema(BaseModel):
     """
-    Описание структуры ответа создания пользователя.
+    User creation response structure description
     """
     user: UserSchema
 
 
 class UpdateUserRequestSchema(BaseModel):
     """
-    Описание структуры запроса на обновление пользователя.
+    User update request structure description
     """
     model_config = ConfigDict(populate_by_name=True)
 
@@ -51,13 +51,13 @@ class UpdateUserRequestSchema(BaseModel):
 
 class UpdateUserResponseSchema(BaseModel):
     """
-    Описание структуры ответа обновления пользователя.
+    User update response structure description
     """
     user: UserSchema
 
 
 class GetUserResponseSchema(BaseModel):
     """
-    Описание структуры запроса получения пользователя.
+    Get user request structure description
     """
     user: UserSchema

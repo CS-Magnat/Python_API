@@ -8,9 +8,9 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class HTTPClientConfig(BaseModel):
     """
-    Конфигурация для HTTP-клиента.
+    Configuration for HTTP client
 
-    Содержит настройки URL и таймаута для HTTP-запросов.
+    Contains URL and timeout settings for HTTP requests
     """
     url: HttpUrl
     timeout: float
@@ -20,18 +20,18 @@ class HTTPClientConfig(BaseModel):
     @property
     def client_url(self) -> str:
         """
-        Возвращает URL клиента в виде строки.
+        Returns client URL as string
 
-        :return: URL-адрес в формате строки.
+        :return: URL address as string
         """
         return str(self.url)
 
 
 class TestDataConfig(BaseModel):
     """
-    Конфигурация для тестовых данных.
+    Configuration for test data
 
-    Содержит пути к файлам, используемым в тестах.
+    Contains paths to files used in tests
     """
     image_png_file: FilePath
 
@@ -39,10 +39,10 @@ class TestDataConfig(BaseModel):
 
 class Settings(BaseSettings):
     """
-    Основные настройки приложения.
+    Main application settings
 
-    Загружает конфигурацию из переменных окружения и .env файла.
-    Содержит настройки для HTTP-клиента, тестовых данных и директории Allure результатов.
+    Loads configuration from environment variables and .env file
+    Contains settings for HTTP client, test data and Allure results directory
     """
     model_config = SettingsConfigDict(
         extra='allow',
@@ -60,11 +60,11 @@ class Settings(BaseSettings):
     @classmethod
     def initialize(cls) -> Self:
         """
-        Инициализирует настройки приложения.
+        Initializes application settings
 
-        Создает директорию для результатов Allure, если она не существует.
+        Creates directory for Allure results if it doesn't exist
 
-        :return: Экземпляр класса Settings с инициализированными настройками.
+        :return: Settings class instance with initialized settings
         """
         allure_results_dir = DirectoryPath("./allure-results")
         allure_results_dir.mkdir(exist_ok=True)

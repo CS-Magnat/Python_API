@@ -10,25 +10,25 @@ from tools.routes import APIRoutes
 
 class PublicUsersClient(APIClient):
     """
-    Клиент для работы с /api/v1/users
+    Client for working with /api/v1/users
     """
     @allure.step("Create user")
     def create_user_api(self, request: CreateUserRequestSchema) -> Response:
         """
-        Метод создает пользователя.
+        Method for creating user
 
-        :param request: Словарь с email, password, lastName, firstName, middleName.
-        :return: Ответ от сервера в виде объекта httpx.Response
+        :param request: Dictionary with email, password, lastName, firstName, middleName
+        :return: Server response as httpx.Response object
         """
         return self.post(APIRoutes.USERS, json=request.model_dump(by_alias=True))
 
 
     def create_user(self, request: CreateUserRequestSchema) -> CreateUserResponseSchema:
         """
-        Создает пользователя и возвращает валидированную схему ответа.
+        Creates user and returns validated response schema
 
-        :param request: Данные для создания пользователя.
-        :return: Валидированная схема ответа CreateUserResponseSchema.
+        :param request: Data for creating user
+        :return: Validated response schema CreateUserResponseSchema
         """
         response = self.create_user_api(request)
         return CreateUserResponseSchema.model_validate_json(response.text)
@@ -36,8 +36,8 @@ class PublicUsersClient(APIClient):
 
 def get_public_users_client() -> PublicUsersClient:
     """
-    Функция создаёт экземпляр PublicUsersClient с уже настроенным HTTP-клиентом.
+    Creates an instance of PublicUsersClient with pre-configured HTTP client
 
-    :return: Готовый к использованию PublicUsersClient.
+    :return: Ready-to-use PublicUsersClient
     """
     return PublicUsersClient(client=get_public_http_client())

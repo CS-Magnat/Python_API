@@ -10,9 +10,9 @@ from fixtures.users import UserFixture
 
 class ExerciseFixture(BaseModel):
     """
-    Фикстура для хранения данных упражнения.
+    Fixture for storing exercise data
 
-    Содержит запрос на создание упражнения и ответ от сервера.
+    Contains exercise creation request and server response
     """
     request: CreateExerciseRequestSchema
     response: CreateExerciseResponseSchema
@@ -21,10 +21,10 @@ class ExerciseFixture(BaseModel):
 @pytest.fixture
 def exercises_client(function_user: UserFixture) -> ExercisesClient:
     """
-    Создает клиент для работы с упражнениями с аутентификацией пользователя.
+    Creates client for working with exercises with user authentication
 
-    :param function_user: Фикстура пользователя для аутентификации
-    :return: Настроенный клиент для работы с упражнениями
+    :param function_user: User fixture for authentication
+    :return: Configured client for working with exercises
     """
     return get_exercises_client(function_user.authentication_user)
 
@@ -32,11 +32,11 @@ def exercises_client(function_user: UserFixture) -> ExercisesClient:
 @pytest.fixture
 def function_exercise(function_course: CourseFixture, exercises_client: ExercisesClient) -> ExerciseFixture:
     """
-    Фикстура для создания упражнения в рамках тестовой функции.
+    Fixture for creating exercise within test function
 
-    :param function_course: Фикстура курса, к которому привязано упражнение.
-    :param exercises_client: Клиент для работы с упражнениями.
-    :return: Фикстура с данными созданного упражнения.
+    :param function_course: Course fixture to which exercise is bound
+    :param exercises_client: Client for working with exercises
+    :return: Fixture with created exercise data
     """
     request = CreateExerciseRequestSchema(course_id=function_course.response.course.id)
     response = exercises_client.create_exercise(request)

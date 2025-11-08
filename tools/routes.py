@@ -3,9 +3,9 @@ from enum import Enum
 
 class APIRoutes(str, Enum):
     """
-    Перечисление маршрутов API.
+    API routes enumeration
 
-    Содержит все базовые пути к эндпоинтам API.
+    Contains all base paths to API endpoints
     """
     USERS = "/api/v1/users"
     FILES = "/api/v1/files"
@@ -15,8 +15,8 @@ class APIRoutes(str, Enum):
 
     def __str__(self):
         """
-        Возвращает значение маршрута в виде строки.
+        Returns route value as string
 
-        :return: Значение маршрута API.
+        :return: API route value
         """
         return self.value

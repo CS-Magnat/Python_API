@@ -10,10 +10,10 @@ from clients.users.users_schema import CreateUserRequestSchema, CreateUserRespon
 
 class UserFixture(BaseModel):
     """
-    Фикстура для хранения данных пользователя.
+    Fixture for storing user data
 
-    Содержит запрос на создание пользователя и ответ от сервера.
-    Предоставляет свойства для доступа к email, password и authentication_user.
+    Contains user creation request and server response
+    Provides properties for accessing email, password and authentication_user
     """
     request: CreateUserRequestSchema
     response: CreateUserResponseSchema
@@ -35,9 +35,9 @@ class UserFixture(BaseModel):
 @pytest.fixture
 def public_users_client() -> PublicUsersClient:
     """
-    Фикстура для создания публичного клиента пользователей.
+    Fixture for creating public users client
 
-    :return: Настроенный PublicUsersClient для работы с публичными эндпоинтами.
+    :return: Configured PublicUsersClient for working with public endpoints
     """
     return get_public_users_client()
 
@@ -45,10 +45,10 @@ def public_users_client() -> PublicUsersClient:
 @pytest.fixture
 def function_user(public_users_client: PublicUsersClient) -> UserFixture:
     """
-    Фикстура для создания пользователя в рамках тестовой функции.
+    Fixture for creating user within test function
 
-    :param public_users_client: Публичный клиент для создания пользователя.
-    :return: Фикстура с данными созданного пользователя.
+    :param public_users_client: Public client for creating user
+    :return: Fixture with created user data
     """
     request = CreateUserRequestSchema()
     response = public_users_client.create_user(request)
@@ -58,10 +58,10 @@ def function_user(public_users_client: PublicUsersClient) -> UserFixture:
 @pytest.fixture
 def private_users_client(function_user: UserFixture) -> PrivateUsersClient:
     """
-    Фикстура для создания приватного клиента пользователей с аутентификацией.
+    Fixture for creating private users client with authentication
 
-    :param function_user: Фикстура пользователя для аутентификации.
-    :return: Настроенный PrivateUsersClient с аутентификацией.
+    :param function_user: User fixture for authentication
+    :return: Configured PrivateUsersClient with authentication
     """
     return get_private_users_client(function_user.authentication_user)
 

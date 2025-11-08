@@ -3,13 +3,13 @@ import logging
 
 def get_logger(name: str) -> logging.Logger:
     """
-    Создает и настраивает логгер с указанным именем.
+    Creates and configures logger with specified name
 
-    Настраивает логгер с уровнем DEBUG, добавляет обработчик для вывода
-    в консоль с форматированием: время, имя логгера, уровень и сообщение.
+    Configures logger with DEBUG level, adds handler for console output
+    with formatting: time, logger name, level and message
 
-    :param name: Имя логгера.
-    :return: Настроенный объект logging.Logger.
+    :param name: Logger name
+    :return: Configured logging.Logger object
     """
     logger = logging.getLogger(name)
     logger.setLevel(logging.DEBUG)

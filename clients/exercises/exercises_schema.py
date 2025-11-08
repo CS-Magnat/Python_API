@@ -17,7 +17,7 @@ class ExercisesSchema(BaseModel):
 
 
 class ExerciseSchema(BaseModel):
-    """Схема для одного упражнения"""
+    """Schema for a single exercise"""
     model_config = ConfigDict(populate_by_name=True)
 
     id: str
@@ -49,22 +49,22 @@ class GetExercisesQuerySchema(BaseModel):
 
 
 class GetExercisesListResponseSchema(BaseModel):
-    """Схема для получения списка упражнений"""
+    """Schema for getting list of exercises"""
     model_config = ConfigDict(populate_by_name=True)
     exercises: list[ExercisesSchema]
 
 
 class GetExerciseResponseSchema(BaseModel):
-    """Схема для получения одного упражнения"""
+    """Schema for getting a single exercise"""
     exercise: ExerciseSchema
-"""Обе схемы ссылаются на одну ExerciseSchema, потому что и создание, и получение упражнения возвращают 
-одинаковую структуру данных - одно упражнение с теми же полями."""
+"""Both schemas reference the same ExerciseSchema because both creating and getting exercise return 
+the same data structure - a single exercise with the same fields"""
 
 class CreateExerciseResponseSchema(BaseModel):
-    """Схема ответа создания упражнения"""
+    """Schema for exercise creation response"""
     exercise: ExerciseSchema
-"""Обе схемы ссылаются на одну ExerciseSchema, потому что и создание, и получение упражнения возвращают 
-одинаковую структуру данных - одно упражнение с теми же полями."""
+"""Both schemas reference the same ExerciseSchema because both creating and getting exercise return 
+the same data structure - a single exercise with the same fields"""
 
 
 class CreateExerciseRequestSchema(BaseModel):

@@ -9,9 +9,9 @@ logger = get_logger("HTTP_CLIENT")
 
 def curl_event_hook(request: Request):
     """
-    Event hook для автоматического прикрепления cURL команды к Allure отчету.
+    Event hook for automatically attaching cURL command to Allure report
 
-    :param request: HTTP-запрос, переданный в `httpx` клиент.
+    :param request: HTTP request passed to `httpx` client
     """
     curl_command = make_curl_from_request(request)
     allure.attach(curl_command, "cURL command", allure.attachment_type.TEXT)
@@ -19,18 +19,18 @@ def curl_event_hook(request: Request):
 
 def log_request_event_hook(request: Request):
     """
-    Логирует информацию об отправленном HTTP-запросе.
+    Logs information about sent HTTP request
 
-    :param request: Объект запроса HTTPX.
+    :param request: HTTPX request object
     """
     logger.info(f'Make {request.method} request to {request.url}')
 
 
 def log_response_event_hook(response: Response):
     """
-    Логирует информацию о полученном HTTP-ответе.
+    Logs information about received HTTP response
 
-    :param response: Объект ответа HTTPX.
+    :param response: HTTPX response object
     """
     logger.info(
         f"Got response {response.status_code} {response.reason_phrase} from {response.url}"

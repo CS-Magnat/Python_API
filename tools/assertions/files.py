@@ -14,11 +14,11 @@ logger = get_logger("FILES_ASSERTIONS")
 @allure.step("Check create file response")
 def assert_create_file_response(request: CreateFileRequestSchema, response: CreateFileResponseSchema):
     """
-    Проверяет, что ответ на создание файла соответствует запросу.
+    Checks that file creation response matches request
 
-    :param request: Исходный запрос на создание файла.
-    :param response: Ответ API с данными файла.
-    :raises AssertionError: Если хотя бы одно поле не совпадает.
+    :param request: Original file creation request
+    :param response: API response with file data
+    :raises AssertionError: If any field doesn't match
     """
 
     logger.info("Check create file response")
@@ -30,11 +30,11 @@ def assert_create_file_response(request: CreateFileRequestSchema, response: Crea
 @allure.step("Check file")
 def assert_file(actual: FileSchema, expected: FileSchema):
     """
-    Проверяет, что фактические данные файла соответствуют ожидаемым.
+    Checks that actual file data matches expected
 
-    :param actual: Фактические данные файла.
-    :param expected: Ожидаемые данные файла.
-    :raises AssertionError: Если хотя бы одно поле не совпадает.
+    :param actual: Actual file data
+    :param expected: Expected file data
+    :raises AssertionError: If any field doesn't match
     """
 
     logger.info("Check file")
@@ -50,11 +50,11 @@ def assert_get_file_response(
         create_file_response: CreateFileResponseSchema
 ):
     """
-    Проверяет, что ответ на получение файла соответствует ответу на его создание.
+    Checks that get file response matches file creation response
 
-    :param get_file_response: Ответ API при запросе данных файла.
-    :param create_file_response: Ответ API при создании файла.
-    :raises AssertionError: Если данные файла не совпадают.
+    :param get_file_response: API response when requesting file data
+    :param create_file_response: API response when creating file
+    :raises AssertionError: If file data doesn't match
     """
     logger.info("Check get file response")
     assert_file(get_file_response.file, create_file_response.file)
@@ -63,10 +63,10 @@ def assert_get_file_response(
 @allure.step("Check create file with empty filename response")
 def assert_create_file_with_empty_filename_response(actual: ValidationErrorResponseSchema):
     """
-    Проверяет, что ответ на создание файла с пустым именем файла соответствует ожидаемой валидационной ошибке.
+    Checks that file creation response with empty filename matches expected validation error
 
-    :param actual: Ответ от API с ошибкой валидации, который необходимо проверить.
-    :raises AssertionError: Если фактический ответ не соответствует ожидаемому.
+    :param actual: API response with validation error to check
+    :raises AssertionError: If actual response doesn't match expected
     """
     logger.info("Check create file with empty filename response")
     expected = ValidationErrorResponseSchema(
@@ -86,10 +86,10 @@ def assert_create_file_with_empty_filename_response(actual: ValidationErrorRespo
 @allure.step("Check create file with empty directory response")
 def assert_create_file_with_empty_directory_response(actual: ValidationErrorResponseSchema):
     """
-    Проверяет, что ответ на создание файла с пустым значением директории соответствует ожидаемой валидационной ошибке.
+    Checks that file creation response with empty directory matches expected validation error
 
-    :param actual: Ответ от API с ошибкой валидации, который необходимо проверить.
-    :raises AssertionError: Если фактический ответ не соответствует ожидаемому.
+    :param actual: API response with validation error to check
+    :raises AssertionError: If actual response doesn't match expected
     """
     logger.info("Check create file with empty directory response")
     expected = ValidationErrorResponseSchema(
@@ -109,10 +109,10 @@ def assert_create_file_with_empty_directory_response(actual: ValidationErrorResp
 @allure.step("Check file not found response")
 def assert_file_not_found_response(actual: InternalErrorResponseSchema):
     """
-    Функция для проверки ошибки, если файл не найден на сервере.
+    Checks error when file is not found on server
 
-    :param actual: Фактический ответ.
-    :raises AssertionError: Если фактический ответ не соответствует ошибке "File not found"
+    :param actual: Actual response
+    :raises AssertionError: If actual response doesn't match "File not found" error
     """
     logger.info("Check file not found response")
     expected = InternalErrorResponseSchema(details="File not found")
@@ -122,11 +122,10 @@ def assert_file_not_found_response(actual: InternalErrorResponseSchema):
 @allure.step("Check get file with incorrect file id response")
 def assert_get_file_with_incorrect_file_id_response(actual):
     """
-    Проверяет, что ответ API на запрос файла с некорректным file_id
-    соответствует ожидаемому формату ошибки валидации.
+    Checks that API response for file request with incorrect file_id matches expected validation error format
 
-    :param actual: Фактический ответ API с ошибкой валидации
-    :raises AssertionError: Если фактический ответ не соответствует ожидаемому
+    :param actual: Actual API response with validation error
+    :raises AssertionError: If actual response doesn't match expected
     """
     logger.info("Check get file with incorrect file id response")
     expected = ValidationErrorResponseSchema(

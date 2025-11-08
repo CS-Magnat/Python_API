@@ -9,11 +9,11 @@ logger = get_logger("BASE_ASSERTIONS")
 @allure.step("Check that response status code equals to {expected}")
 def assert_status_code(actual: int, expected: int):
     """
-    Проверяет, что фактический статус-код ответа соответствует ожидаемому.
+    Checks that actual response status code matches expected
 
-    :param actual: Фактический статус-код ответа.
-    :param expected: Ожидаемый статус-код.
-    :raises AssertionError: Если статус-коды не совпадают.
+    :param actual: Actual response status code
+    :param expected: Expected status code
+    :raises AssertionError: If status codes don't match
     """
     logger.info(f"Check that response status code equals to {expected}")
     assert actual == expected, (
@@ -27,12 +27,12 @@ def assert_status_code(actual: int, expected: int):
 @allure.step("Check that {name} equals to {expected}")
 def assert_equal(actual: Any, expected: Any, name: str):
     """
-    Проверяет, что фактическое значение равно ожидаемому.
+    Checks that actual value equals expected
 
-    :param name: Название проверяемого значения.
-    :param actual: Фактическое значение.
-    :param expected: Ожидаемое значение.
-    :raises AssertionError: Если фактическое значение не равно ожидаемому.
+    :param name: Name of the value being checked
+    :param actual: Actual value
+    :param expected: Expected value
+    :raises AssertionError: If actual value doesn't equal expected
     """
 
     logger.info(f'Check that "{name}" equals to {expected}')
@@ -47,11 +47,11 @@ def assert_equal(actual: Any, expected: Any, name: str):
 @allure.step("Check that {name} is true")
 def assert_is_true(actual: Any, name: str):
     """
-    Проверяет, что фактическое значение является истинным.
+    Checks that actual value is true
 
-    :param name: Название проверяемого значения.
-    :param actual: Фактическое значение.
-    :raises AssertionError: Если фактическое значение ложно.
+    :param name: Name of the value being checked
+    :param actual: Actual value
+    :raises AssertionError: If actual value is false
     """
 
     logger.info(f'Check that "{name}" is true')
@@ -63,12 +63,12 @@ def assert_is_true(actual: Any, name: str):
 
 def assert_length(actual: Sized, expected: Sized, name: str):
     """
-    Проверяет, что длины двух объектов совпадают.
+    Checks that lengths of two objects match
 
-    :param name: Название проверяемого объекта.
-    :param actual: Фактический объект.
-    :param expected: Ожидаемый объект.
-    :raises AssertionError: Если длины не совпадают.
+    :param name: Name of the object being checked
+    :param actual: Actual object
+    :param expected: Expected object
+    :raises AssertionError: If lengths don't match
     """
     with allure.step(f"Check that length of {name} equals to {len(expected)}"):
         logger.info(f'Check that length of "{name}" equals to {len(expected)}')

@@ -8,15 +8,15 @@ from tools.routes import APIRoutes
 
 class AuthenticationClient(APIClient):
     """
-    Клиент для работы с /api/v1/authentication
+    Client for working with /api/v1/authentication
     """
     @allure.step("Authenticate user")
     def login_api(self, request: LoginRequestSchema) -> Response:
         """
-        Метод выполняет аутентификацию пользователя.
+        Method for authenticating user
 
-        :param request: Словарь с email и password.
-        :return: Ответ от сервера в виде объекта httpx.Response
+        :param request: Dictionary with email and password
+        :return: Server response as httpx.Response object
         """
         return self.post(
             f"{APIRoutes.AUTHENTICATION}/login",
@@ -27,10 +27,10 @@ class AuthenticationClient(APIClient):
     @allure.step("Refresh authentication token")
     def refresh_api(self, request: RefreshRequestSchema) -> Response:
         """
-        Метод обновляет токен авторизации.
+        Method for refreshing authorization token
 
-        :param request: Словарь с refreshToken.
-        :return: Ответ от сервера в виде объекта httpx.Response
+        :param request: Dictionary with refreshToken
+        :return: Server response as httpx.Response object
         """
         return self.post(
             f"{APIRoutes.AUTHENTICATION}/refresh",
@@ -40,10 +40,10 @@ class AuthenticationClient(APIClient):
 
     def login(self, request: LoginRequestSchema) -> LoginResponseSchema:
         """
-        Выполняет аутентификацию пользователя и возвращает валидированную схему ответа.
+        Authenticates user and returns validated response schema
 
-        :param request: Данные для аутентификации (email и password).
-        :return: Валидированная схема ответа LoginResponseSchema с токенами.
+        :param request: Authentication data (email and password)
+        :return: Validated response schema LoginResponseSchema with tokens
         """
         response = self.login_api(request)
         return LoginResponseSchema.model_validate_json(response.text)
@@ -51,8 +51,8 @@ class AuthenticationClient(APIClient):
 
 def get_authentication_client() -> AuthenticationClient:
     """
-    Функция создаёт экземпляр AuthenticationClient с уже настроенным HTTP-клиентом.
+    Creates an instance of AuthenticationClient with pre-configured HTTP client
 
-    :return: Готовый к использованию AuthenticationClient.
+    :return: Ready-to-use AuthenticationClient
     """
     return AuthenticationClient(client=get_public_http_client())

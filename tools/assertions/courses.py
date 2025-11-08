@@ -12,11 +12,11 @@ logger = get_logger("COURSES_ASSERTIONS")
 @allure.step("Check update course response")
 def assert_update_course_response(request: UpdateCourseRequestSchema, response: UpdateCourseResponseSchema):
     """
-    Проверяет, что ответ на обновление курса соответствует данным из запроса.
+    Checks that course update response matches request data
 
-    :param request: Исходный запрос на обновление курса.
-    :param response: Ответ API с обновленными данными курса.
-    :raises AssertionError: Если хотя бы одно поле не совпадает.
+    :param request: Original course update request
+    :param response: API response with updated course data
+    :raises AssertionError: If any field doesn't match
     """
     logger.info("Check update course response")
     assert_equal(response.course.title, request.title, "title")
@@ -29,11 +29,11 @@ def assert_update_course_response(request: UpdateCourseRequestSchema, response: 
 @allure.step("Check course")
 def assert_course(actual: CourseSchema, expected: CourseSchema):
     """
-    Проверяет, что фактические данные курса соответствуют ожидаемым.
+    Checks that actual course data matches expected
 
-    :param actual: Фактические данные курса.
-    :param expected: Ожидаемые данные курса.
-    :raises AssertionError: Если хотя бы одно поле не совпадает.
+    :param actual: Actual course data
+    :param expected: Expected course data
+    :raises AssertionError: If any field doesn't match
     """
     logger.info("Check course")
     assert_equal(actual.id, expected.id, "id")
@@ -49,11 +49,11 @@ def assert_course(actual: CourseSchema, expected: CourseSchema):
 @allure.step("Check get courses response")
 def assert_get_courses_response(get_courses_response: GetCoursesResponseSchema, create_course_responses: list[CreateCourseResponseSchema]):
     """
-    Проверяет, что ответ на получение списка курсов соответствует ответам на их создание.
+    Checks that get courses response matches course creation responses
 
-    :param get_courses_response: Ответ API при запросе списка курсов.
-    :param create_course_responses: Список API ответов при создании курсов.
-    :raises AssertionError: Если данные курсов не совпадают.
+    :param get_courses_response: API response when requesting courses list
+    :param create_course_responses: List of API responses when creating courses
+    :raises AssertionError: If course data doesn't match
     """
     logger.info("Check get courses response")
     assert_length(get_courses_response.courses, create_course_responses, "courses")
@@ -65,11 +65,11 @@ def assert_get_courses_response(get_courses_response: GetCoursesResponseSchema, 
 @allure.step("Check create course response")
 def assert_create_course_response(actual: CreateCourseRequestSchema, expected: CreateCourseResponseSchema):
     """
-    Проверяет, что ответ на создание курса соответствует запросу.
+    Checks that course creation response matches request
 
-    :param request: Исходный запрос на создание курса.
-    :param response: Ответ API с данными курса.
-    :raises AssertionError: Если хотя бы одно поле не совпадает.
+    :param actual: Original course creation request
+    :param expected: API response with course data
+    :raises AssertionError: If any field doesn't match
     """
     logger.info("Check create course response")
     assert_equal(actual.title, expected.course.title, "title")

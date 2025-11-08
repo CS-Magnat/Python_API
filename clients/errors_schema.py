@@ -6,7 +6,7 @@ from pydantic import BaseModel, Field, ConfigDict
 
 class ValidationErrorSchema(BaseModel):
     """
-    Модель, описывающая структуру ошибки валидации API.
+    Model describing API validation error structure
     """
     model_config = ConfigDict(populate_by_name=True)
 
@@ -19,7 +19,7 @@ class ValidationErrorSchema(BaseModel):
 
 class ValidationErrorResponseSchema(BaseModel):
     """
-    Модель, описывающая структуру ответа API с ошибкой валидации.
+    Model describing API response structure with validation error
     """
     model_config = ConfigDict(populate_by_name=True)
 
@@ -28,7 +28,7 @@ class ValidationErrorResponseSchema(BaseModel):
 
 class InternalErrorResponseSchema(BaseModel):
     """
-    Модель для описания внутренней ошибки.
+    Model for describing internal error
     """
 
     model_config = ConfigDict(populate_by_name=True)

@@ -6,7 +6,7 @@ from tools.fakers import fake
 
 class CourseSchema(BaseModel):
     """
-    Описание структуры курса.
+    Course structure description
     """
     model_config = ConfigDict(populate_by_name=True)
 
@@ -22,14 +22,14 @@ class CourseSchema(BaseModel):
 
 class GetCoursesResponseSchema(BaseModel):
     """
-    Описание структуры ответа на получение списка курсов.
+    Get courses list response structure description
     """
     courses: list[CourseSchema]
 
 
 class GetCoursesQuerySchema(BaseModel):
     """
-    Описание структуры запроса на получение списка курсов.
+    Get courses list request structure description
     """
     model_config = ConfigDict(populate_by_name=True)
 
@@ -38,14 +38,14 @@ class GetCoursesQuerySchema(BaseModel):
 
 class CreateCourseResponseSchema(BaseModel):
     """
-    Описание структуры ответа создания курса.
+    Course creation response structure description
     """
     course: CourseSchema
 
 
 class CreateCourseRequestSchema(BaseModel):
     """
-    Описание структуры запроса на создание курса.
+    Course creation request structure description
     """
     model_config = ConfigDict(populate_by_name=True)
 
@@ -60,7 +60,7 @@ class CreateCourseRequestSchema(BaseModel):
 
 class UpdateCourseRequestSchema(BaseModel):
     """
-    Описание структуры запроса на обновление курса.
+    Course update request structure description
     """
     model_config = ConfigDict(populate_by_name=True)
 
@@ -73,7 +73,7 @@ class UpdateCourseRequestSchema(BaseModel):
 
 class UpdateCourseResponseSchema(BaseModel):
     """
-    Описание структуры ответа обновления курса.
+    Course update response structure description
     """
     course: CourseSchema
 

@@ -3,10 +3,10 @@ from httpx import Request, RequestNotRead
 
 def make_curl_from_request(request: Request) -> str:
     """
-    Генерирует команду cURL из HTTP-запроса httpx.
+    Generates cURL command from httpx HTTP request
 
-    :param request: HTTP-запрос, из которого будет сформирована команда cURL.
-    :return: Строка с командой cURL, содержащая метод запроса, URL, заголовки и тело (если есть).
+    :param request: HTTP request from which cURL command will be formed
+    :return: String with cURL command containing request method, URL, headers and body (if present)
     """
     result: list[str] = [f"curl -X '{request.method}'", f"'{request.url}'"]
 

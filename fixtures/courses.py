@@ -10,9 +10,9 @@ from fixtures.users import UserFixture
 
 class CourseFixture(BaseModel):
     """
-    Фикстура для хранения данных курса.
+    Fixture for storing course data
 
-    Содержит запрос на создание курса и ответ от сервера.
+    Contains course creation request and server response
     """
     request: CreateCourseRequestSchema
     response: CreateCourseResponseSchema
@@ -21,10 +21,10 @@ class CourseFixture(BaseModel):
 @pytest.fixture
 def courses_client(function_user: UserFixture) -> CoursesClient:
     """
-    Фикстура для создания клиента курсов с аутентификацией пользователя.
+    Fixture for creating courses client with user authentication
 
-    :param function_user: Фикстура пользователя для аутентификации.
-    :return: Настроенный CoursesClient для работы с курсами.
+    :param function_user: User fixture for authentication
+    :return: Configured CoursesClient for working with courses
     """
     return get_courses_client(function_user.authentication_user)
 
@@ -32,12 +32,12 @@ def courses_client(function_user: UserFixture) -> CoursesClient:
 @pytest.fixture
 def function_course(courses_client: CoursesClient, function_user: UserFixture, function_file: FileFixture) -> CourseFixture:
     """
-    Фикстура для создания курса в рамках тестовой функции.
+    Fixture for creating course within test function
 
-    :param courses_client: Клиент для работы с курсами.
-    :param function_user: Фикстура пользователя, создающего курс.
-    :param function_file: Фикстура файла для превью курса.
-    :return: Фикстура с данными созданного курса.
+    :param courses_client: Client for working with courses
+    :param function_user: User fixture creating the course
+    :param function_file: File fixture for course preview
+    :return: Fixture with created course data
     """
     request = CreateCourseRequestSchema(
         preview_file_id=function_file.response.file.id,
