@@ -1,0 +1,11 @@
+curl -X 'POST' \
+  'http://localhost:8000/api/v1/courses' \
+  -H 'host: localhost:8000' \
+  -H 'accept: */*' \
+  -H 'accept-encoding: gzip, deflate' \
+  -H 'connection: keep-alive' \
+  -H 'user-agent: python-httpx/0.28.1' \
+  -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTExLTA5VDA4OjA3OjM5LjA0Mzk3OSIsInVzZXJfaWQiOiIwMGQwYjkyNy1hZWYwLTQ3MWQtYjJiZS1iZjVkNTZjNGMzODAifQ.JdnbmXYZx2omjlz8ix2aMzhmvGNTaVTRr7bxAq9ujoY' \
+  -H 'content-length: 346' \
+  -H 'content-type: application/json' \
+  -d '{"title":"Action soon social.","maxScore":94,"minScore":24,"description":"City development like board. Me imagine simply vote item remain cost. Me community discover whom visit experience movement economy.","estimatedTime":"10 weeks","previewFileId":"f95ff4e7-0e24-4844-86eb-85e180a0a93d","createdByUserId":"00d0b927-aef0-471d-b2be-bf5d56c4c380"}'

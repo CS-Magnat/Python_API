@@ -1,0 +1,11 @@
+curl -X 'POST' \
+  'http://localhost:8000/api/v1/courses' \
+  -H 'host: localhost:8000' \
+  -H 'accept: */*' \
+  -H 'accept-encoding: gzip, deflate' \
+  -H 'connection: keep-alive' \
+  -H 'user-agent: python-httpx/0.28.1' \
+  -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTExLTA5VDA4OjA3OjM3LjgyNDI5NiIsInVzZXJfaWQiOiJiYzMxYmYxMi1mMjAyLTRkNjItODcxNi02ZTIyNmRkODA1NTgifQ._m9AYBYeRc37MQF4FpT_NWAXEWbYNIxqkBA_ldS98ic' \
+  -H 'content-length: 341' \
+  -H 'content-type: application/json' \
+  -d '{"title":"Feeling yeah science or.","maxScore":94,"minScore":6,"description":"Trial beautiful same story boy myself process. Where study avoid wall table professor church. Amount ask find station feel.","estimatedTime":"8 weeks","previewFileId":"5b926bda-0d59-4911-a2ce-47175cf75943","createdByUserId":"bc31bf12-f202-4d62-8716-6e226dd80558"}'

@@ -1,0 +1,11 @@
+curl -X 'POST' \
+  'http://localhost:8000/api/v1/courses' \
+  -H 'host: localhost:8000' \
+  -H 'accept: */*' \
+  -H 'accept-encoding: gzip, deflate' \
+  -H 'connection: keep-alive' \
+  -H 'user-agent: python-httpx/0.28.1' \
+  -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTExLTA5VDA4OjA3OjM2LjA3MTY5OSIsInVzZXJfaWQiOiI4OTAxMWM3YS1mM2U2LTQyNTAtYWQ5NC1kMWIyNTc1MGYzOTIifQ.p3siibgIqtANwVth_hyZv7Zw4s-6_7CPc8gcHBCaFKc' \
+  -H 'content-length: 412' \
+  -H 'content-type: application/json' \
+  -d '{"title":"Relationship network along drive.","maxScore":99,"minScore":17,"description":"Conference thousand side wear four amount machine red. Well natural difference loss job building.\nWill particularly miss important learn friend course. Despite measure probably build.","estimatedTime":"7 weeks","previewFileId":"9ff267f9-3128-4313-b73c-109049bb483e","createdByUserId":"89011c7a-f3e6-4250-ad94-d1b25750f392"}'

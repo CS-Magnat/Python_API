@@ -1,0 +1,11 @@
+curl -X 'PATCH' \
+  'http://localhost:8000/api/v1/exercises/91e9d280-ff82-473d-9551-74471af57fbb' \
+  -H 'host: localhost:8000' \
+  -H 'accept: */*' \
+  -H 'accept-encoding: gzip, deflate' \
+  -H 'connection: keep-alive' \
+  -H 'user-agent: python-httpx/0.28.1' \
+  -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTExLTA5VDA4OjA3OjM3LjgyNDI5NiIsInVzZXJfaWQiOiJiYzMxYmYxMi1mMjAyLTRkNjItODcxNi02ZTIyNmRkODA1NTgifQ._m9AYBYeRc37MQF4FpT_NWAXEWbYNIxqkBA_ldS98ic' \
+  -H 'content-length: 271' \
+  -H 'content-type: application/json' \
+  -d '{"title":"Little someone leg enough land people alone.","maxScore":69,"minScore":7,"orderIndex":48,"description":"Purpose stuff study forget you any trip. Their season civil five central. Actually thing deal rather century political sometimes.","estimatedTime":"9 weeks"}'

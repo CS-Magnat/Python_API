@@ -1,0 +1,11 @@
+curl -X 'POST' \
+  'http://localhost:8000/api/v1/courses' \
+  -H 'host: localhost:8000' \
+  -H 'accept: */*' \
+  -H 'accept-encoding: gzip, deflate' \
+  -H 'connection: keep-alive' \
+  -H 'user-agent: python-httpx/0.28.1' \
+  -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTExLTA5VDA4OjA3OjM3LjI0MzQ4MyIsInVzZXJfaWQiOiI2N2U3MzliNS1jMmNhLTQ0ZjktYTExMi0yYjcxZWE5NmRhMzEifQ.qkFZQM831RXBXRLHDuQE7Zn_Y9YKz2ZK67j2B6etfWw' \
+  -H 'content-length: 410' \
+  -H 'content-type: application/json' \
+  -d '{"title":"White sign model upon action oil drive.","maxScore":91,"minScore":10,"description":"Into sure light difference. Happy myself information camera carry blue property money.\nCase any still. Democratic blood per leader seek newspaper meeting. Parent pass become.","estimatedTime":"10 weeks","previewFileId":"ffb769cb-9f4f-42c7-a358-dc20dce2d9de","createdByUserId":"67e739b5-c2ca-44f9-a112-2b71ea96da31"}'

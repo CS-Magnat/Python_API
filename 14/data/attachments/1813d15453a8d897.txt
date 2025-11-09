@@ -1,0 +1,11 @@
+curl -X 'POST' \
+  'http://localhost:8000/api/v1/courses' \
+  -H 'host: localhost:8000' \
+  -H 'accept: */*' \
+  -H 'accept-encoding: gzip, deflate' \
+  -H 'connection: keep-alive' \
+  -H 'user-agent: python-httpx/0.28.1' \
+  -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTExLTA5VDA4OjA3OjM5LjY0MjcxOSIsInVzZXJfaWQiOiI1NDFjYWUyZi00NGRhLTQ1MzItYjhmZS0xYTVjYmM4ZDFmZTQifQ.hLa2jHqAxv1p5wjMTZ-bgoebD-yKLavr8eazZlG6y60' \
+  -H 'content-length: 358' \
+  -H 'content-type: application/json' \
+  -d '{"title":"Nothing model who fish.","maxScore":80,"minScore":18,"description":"Laugh movie film important discover. Agent place health treat money.\nSpecial government main kind case culture other. Give role hit wrong.","estimatedTime":"10 weeks","previewFileId":"2d463f9e-6165-43b6-8d3d-9bee5ba297c1","createdByUserId":"541cae2f-44da-4532-b8fe-1a5cbc8d1fe4"}'

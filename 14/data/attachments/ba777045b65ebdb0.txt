@@ -1,0 +1,11 @@
+curl -X 'POST' \
+  'http://localhost:8000/api/v1/courses' \
+  -H 'host: localhost:8000' \
+  -H 'accept: */*' \
+  -H 'accept-encoding: gzip, deflate' \
+  -H 'connection: keep-alive' \
+  -H 'user-agent: python-httpx/0.28.1' \
+  -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTExLTA5VDA4OjA3OjM1LjQ4NTYzNyIsInVzZXJfaWQiOiJiMGE0OWE0Ny0xOTU5LTQyMTktODljMC0zNzQ2NjU1N2JiY2YifQ.tQ6x-4hFpsqx7fDpsMSCWPfPB5DtKGQnn6-_oMPohdQ' \
+  -H 'content-length: 365' \
+  -H 'content-type: application/json' \
+  -d '{"title":"Bring about save everybody wife throw very.","maxScore":98,"minScore":2,"description":"Chance wish fact news south.\nNear national thus somebody. Social begin gun mention. Space feel measure year participant lot do.","estimatedTime":"1 weeks","previewFileId":"9cec9503-0d7e-477f-8b44-b1483d1d4b99","createdByUserId":"b0a49a47-1959-4219-89c0-37466557bbcf"}'

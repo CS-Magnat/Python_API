@@ -1,0 +1,11 @@
+curl -X 'POST' \
+  'http://localhost:8000/api/v1/exercises' \
+  -H 'host: localhost:8000' \
+  -H 'accept: */*' \
+  -H 'accept-encoding: gzip, deflate' \
+  -H 'connection: keep-alive' \
+  -H 'user-agent: python-httpx/0.28.1' \
+  -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTExLTA5VDA4OjA3OjM4LjQwNTY0MSIsInVzZXJfaWQiOiJiOTE2ZmEwYS0wMjNhLTRmMWQtOTJhNy1jMTdjYmQ4MGVhMGEifQ.v2GHIPlrypy7a3t-JkUUDsYtRq1G8oVuIxL9EgYIkUk' \
+  -H 'content-length: 373' \
+  -H 'content-type: application/json' \
+  -d '{"title":"Past guy attack possible institution.","courseId":"d9e99b9b-462e-4595-9e1a-e8273490f5e5","maxScore":62,"minScore":28,"orderIndex":50,"description":"Management manager pick. Big including tell entire once. What three teach he arrive he onto.\nItem per draw tend power. Three government positive contain. Range sure into present expect.","estimatedTime":"10 weeks"}'
