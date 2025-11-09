@@ -1,0 +1,11 @@
+curl -X 'POST' \
+  'http://localhost:8000/api/v1/courses' \
+  -H 'host: localhost:8000' \
+  -H 'accept: */*' \
+  -H 'accept-encoding: gzip, deflate' \
+  -H 'connection: keep-alive' \
+  -H 'user-agent: python-httpx/0.28.1' \
+  -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTExLTA5VDA3OjMwOjQ3LjczNDg2OSIsInVzZXJfaWQiOiI5YzNhZDM2OS0wOWRiLTRkODYtYmZhZC0yYzllM2FhZmIxNTEifQ.KXJCgXsnk-ySacu6l_eDNKTHnZ-Is6h5Uv6hULD5aWY' \
+  -H 'content-length: 393' \
+  -H 'content-type: application/json' \
+  -d '{"title":"Area hope decision east wait later.","maxScore":51,"minScore":7,"description":"Avoid environment per. Energy language candidate travel.\nDevelopment generation action price positive set degree could. Design control turn forward quite decision.","estimatedTime":"2 weeks","previewFileId":"86dff0d9-0d30-404c-8756-5496cddf50f6","createdByUserId":"9c3ad369-09db-4d86-bfad-2c9e3aafb151"}'

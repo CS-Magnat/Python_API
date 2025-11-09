@@ -1,0 +1,20 @@
+INFO     HTTP_CLIENT:event_hooks.py:26 Make POST request to http://localhost:8000/api/v1/users
+INFO     HTTP_CLIENT:event_hooks.py:35 Got response 200 OK from http://localhost:8000/api/v1/users
+INFO     HTTP_CLIENT:event_hooks.py:26 Make POST request to http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_CLIENT:event_hooks.py:35 Got response 200 OK from http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_CLIENT:event_hooks.py:26 Make POST request to http://localhost:8000/api/v1/files
+INFO     HTTP_CLIENT:event_hooks.py:35 Got response 200 OK from http://localhost:8000/api/v1/files
+INFO     HTTP_CLIENT:event_hooks.py:26 Make POST request to http://localhost:8000/api/v1/courses
+INFO     HTTP_CLIENT:event_hooks.py:35 Got response 200 OK from http://localhost:8000/api/v1/courses
+INFO     HTTP_CLIENT:event_hooks.py:26 Make POST request to http://localhost:8000/api/v1/exercises
+INFO     HTTP_CLIENT:event_hooks.py:35 Got response 200 OK from http://localhost:8000/api/v1/exercises
+INFO     HTTP_CLIENT:event_hooks.py:26 Make DELETE request to http://localhost:8000/api/v1/exercises/534b632a-87d0-4c70-bca6-3a36d3bbb1ad
+INFO     HTTP_CLIENT:event_hooks.py:35 Got response 200 OK from http://localhost:8000/api/v1/exercises/534b632a-87d0-4c70-bca6-3a36d3bbb1ad
+INFO     BASE_ASSERTIONS:base.py:18 Check that response status code equals to 200
+INFO     HTTP_CLIENT:event_hooks.py:26 Make GET request to http://localhost:8000/api/v1/exercises/534b632a-87d0-4c70-bca6-3a36d3bbb1ad
+INFO     HTTP_CLIENT:event_hooks.py:35 Got response 404 Not Found from http://localhost:8000/api/v1/exercises/534b632a-87d0-4c70-bca6-3a36d3bbb1ad
+INFO     BASE_ASSERTIONS:base.py:18 Check that response status code equals to 404
+INFO     EXERCISES_ASSERTIONS:exercises.py:52 Check exercise not found response
+INFO     ERRORS_ASSERTIONS:errors.py:56 Check internal error response
+INFO     BASE_ASSERTIONS:base.py:38 Check that "details" equals to Exercise not found
+INFO     SCHEMA_ASSERTIONS:schema.py:19 Validating JSON schema

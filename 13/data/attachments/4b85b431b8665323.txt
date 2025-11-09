@@ -1,0 +1,11 @@
+curl -X 'POST' \
+  'http://localhost:8000/api/v1/courses' \
+  -H 'host: localhost:8000' \
+  -H 'accept: */*' \
+  -H 'accept-encoding: gzip, deflate' \
+  -H 'connection: keep-alive' \
+  -H 'user-agent: python-httpx/0.28.1' \
+  -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTExLTA5VDA3OjMwOjUwLjEyNDQ2NSIsInVzZXJfaWQiOiI1ZDMwM2NkYS02ZTMyLTRjYTctYTU5OC04NzZhOTI1NjAwZDMifQ._t2JzsxxU4hpiRSPlnPQd8HARLLT8Ozx3PGq3BGVa_s' \
+  -H 'content-length: 414' \
+  -H 'content-type: application/json' \
+  -d '{"title":"Last government question cover contain herself nice.","maxScore":57,"minScore":11,"description":"Democratic various both stand rest onto accept. Current people population tend. Issue represent feel receive staff section north. Voice today see culture blue control.","estimatedTime":"2 weeks","previewFileId":"2e9edd66-3822-42d2-8c6c-7363846d44b0","createdByUserId":"5d303cda-6e32-4ca7-a598-876a925600d3"}'

@@ -1,0 +1,11 @@
+curl -X 'POST' \
+  'http://localhost:8000/api/v1/courses' \
+  -H 'host: localhost:8000' \
+  -H 'accept: */*' \
+  -H 'accept-encoding: gzip, deflate' \
+  -H 'connection: keep-alive' \
+  -H 'user-agent: python-httpx/0.28.1' \
+  -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTExLTA5VDA3OjMwOjQ1LjQwMTI0NiIsInVzZXJfaWQiOiIxMThhZmI1Zi03MDM3LTQ2NWQtODYxMC1lMDA5OWMzNWUzNzcifQ.R36rz0cg5uI9PbCdKhgughg1N5hQCx_fO9ki00tZ3dc' \
+  -H 'content-length: 361' \
+  -H 'content-type: application/json' \
+  -d '{"title":"Six just all focus threat.","maxScore":82,"minScore":22,"description":"Threat or surface later. Close face American significant.\nProve human painting medical treat enough. Culture strategy follow cold campaign.","estimatedTime":"2 weeks","previewFileId":"ddbbc2d8-3d29-46e5-8cd0-e417cf431ce2","createdByUserId":"118afb5f-7037-465d-8610-e0099c35e377"}'

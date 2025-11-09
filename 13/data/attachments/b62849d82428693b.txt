@@ -1,0 +1,33 @@
+INFO     HTTP_CLIENT:event_hooks.py:26 Make POST request to http://localhost:8000/api/v1/users
+INFO     HTTP_CLIENT:event_hooks.py:35 Got response 200 OK from http://localhost:8000/api/v1/users
+INFO     HTTP_CLIENT:event_hooks.py:26 Make POST request to http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_CLIENT:event_hooks.py:35 Got response 200 OK from http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_CLIENT:event_hooks.py:26 Make POST request to http://localhost:8000/api/v1/files
+INFO     HTTP_CLIENT:event_hooks.py:35 Got response 200 OK from http://localhost:8000/api/v1/files
+INFO     HTTP_CLIENT:event_hooks.py:26 Make POST request to http://localhost:8000/api/v1/courses
+INFO     HTTP_CLIENT:event_hooks.py:35 Got response 200 OK from http://localhost:8000/api/v1/courses
+INFO     HTTP_CLIENT:event_hooks.py:26 Make GET request to http://localhost:8000/api/v1/courses?userId=118afb5f-7037-465d-8610-e0099c35e377
+INFO     HTTP_CLIENT:event_hooks.py:35 Got response 200 OK from http://localhost:8000/api/v1/courses?userId=118afb5f-7037-465d-8610-e0099c35e377
+INFO     BASE_ASSERTIONS:base.py:18 Check that response status code equals to 200
+INFO     COURSES_ASSERTIONS:courses.py:58 Check get courses response
+INFO     BASE_ASSERTIONS:base.py:74 Check that length of "courses" equals to 1
+INFO     COURSES_ASSERTIONS:courses.py:38 Check course
+INFO     BASE_ASSERTIONS:base.py:38 Check that "id" equals to 18477414-39f5-4b83-865f-500fef916073
+INFO     BASE_ASSERTIONS:base.py:38 Check that "title" equals to Six just all focus threat.
+INFO     BASE_ASSERTIONS:base.py:38 Check that "max_score" equals to 82
+INFO     BASE_ASSERTIONS:base.py:38 Check that "min_score" equals to 22
+INFO     BASE_ASSERTIONS:base.py:38 Check that "description" equals to Threat or surface later. Close face American significant.
+Prove human painting medical treat enough. Culture strategy follow cold campaign.
+INFO     BASE_ASSERTIONS:base.py:38 Check that "estimated_time" equals to 2 weeks
+INFO     FILES_ASSERTIONS:files.py:40 Check file
+INFO     BASE_ASSERTIONS:base.py:38 Check that "id" equals to ddbbc2d8-3d29-46e5-8cd0-e417cf431ce2
+INFO     BASE_ASSERTIONS:base.py:38 Check that "url" equals to http://localhost:8000/static/tests/02ec4d85-053b-4c4f-af0e-54c02982393c.png
+INFO     BASE_ASSERTIONS:base.py:38 Check that "filename" equals to 02ec4d85-053b-4c4f-af0e-54c02982393c.png
+INFO     BASE_ASSERTIONS:base.py:38 Check that "directory" equals to tests
+INFO     USERS_ASSERTIONS:users.py:36 Check user
+INFO     BASE_ASSERTIONS:base.py:38 Check that "id" equals to 118afb5f-7037-465d-8610-e0099c35e377
+INFO     BASE_ASSERTIONS:base.py:38 Check that "email" equals to davidsutton@example.org
+INFO     BASE_ASSERTIONS:base.py:38 Check that "last_name" equals to Bennett
+INFO     BASE_ASSERTIONS:base.py:38 Check that "first_name" equals to Jill
+INFO     BASE_ASSERTIONS:base.py:38 Check that "middle_name" equals to Sierra
+INFO     SCHEMA_ASSERTIONS:schema.py:19 Validating JSON schema

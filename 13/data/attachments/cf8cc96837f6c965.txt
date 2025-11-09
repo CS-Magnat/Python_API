@@ -1,0 +1,11 @@
+curl -X 'POST' \
+  'http://localhost:8000/api/v1/courses' \
+  -H 'host: localhost:8000' \
+  -H 'accept: */*' \
+  -H 'accept-encoding: gzip, deflate' \
+  -H 'connection: keep-alive' \
+  -H 'user-agent: python-httpx/0.28.1' \
+  -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTExLTA5VDA3OjMwOjQ2LjgxOTQ1MCIsInVzZXJfaWQiOiI0ODRjYjYxMi01NGNlLTQzZWYtOGUxNC1jYzg4MTBiNDE0MDYifQ.oIho1dwj3mGvhIWcZa8yMVixJgicW1PLqicgx-96lxg' \
+  -H 'content-length: 409' \
+  -H 'content-type: application/json' \
+  -d '{"title":"Detail condition hour.","maxScore":96,"minScore":3,"description":"Capital entire popular key social fish similar.\nOver part after soldier news. Dark miss also call door most pass.\nDifferent base care whose society should view. Rock degree nature power bank.","estimatedTime":"9 weeks","previewFileId":"92a1e2ef-816c-4c55-b814-64fc3546cca4","createdByUserId":"484cb612-54ce-43ef-8e14-cc8810b41406"}'

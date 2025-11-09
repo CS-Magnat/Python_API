@@ -1,0 +1,11 @@
+curl -X 'POST' \
+  'http://localhost:8000/api/v1/courses' \
+  -H 'host: localhost:8000' \
+  -H 'accept: */*' \
+  -H 'accept-encoding: gzip, deflate' \
+  -H 'connection: keep-alive' \
+  -H 'user-agent: python-httpx/0.28.1' \
+  -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTExLTA5VDA3OjMwOjQ2LjU0NTE5MCIsInVzZXJfaWQiOiI1M2NjMjJlOS01MWI5LTRkMjQtODc4Ni1lMjhlZjNhODY3YjgifQ.3DLbVTa_Ex0DXhi_9QOLHXyYHi4axioGqkZlN-DPJMo' \
+  -H 'content-length: 358' \
+  -H 'content-type: application/json' \
+  -d '{"title":"Available keep degree.","maxScore":92,"minScore":27,"description":"Yeah tonight two blood. Interesting determine think. Single short when.\nCharacter glass TV avoid. Institution response listen challenge who.","estimatedTime":"5 weeks","previewFileId":"3e42d547-753b-44bf-89d3-50c4e4ea7a63","createdByUserId":"53cc22e9-51b9-4d24-8786-e28ef3a867b8"}'

@@ -1,0 +1,11 @@
+curl -X 'POST' \
+  'http://localhost:8000/api/v1/courses' \
+  -H 'host: localhost:8000' \
+  -H 'accept: */*' \
+  -H 'accept-encoding: gzip, deflate' \
+  -H 'connection: keep-alive' \
+  -H 'user-agent: python-httpx/0.28.1' \
+  -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTExLTA5VDA3OjMwOjQ4LjkyNTIzOSIsInVzZXJfaWQiOiIwYzIwZWY5Zi1jZTNhLTRmMDAtYTlkZC0zMzEzNDE2MjY1ZTEifQ.TqitzqodeF-TxHW3xBC8XJURXzWazRPtdhiLWQsatHk' \
+  -H 'content-length: 276' \
+  -H 'content-type: application/json' \
+  -d '{"title":"Road these apply.","maxScore":88,"minScore":6,"description":"Wife leave past use set. Material yard financial direction while.","estimatedTime":"2 weeks","previewFileId":"b797d331-3809-4704-87c9-130f75ec81ac","createdByUserId":"0c20ef9f-ce3a-4f00-a9dd-3313416265e1"}'

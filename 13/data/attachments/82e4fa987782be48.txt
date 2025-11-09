@@ -1,0 +1,11 @@
+curl -X 'PATCH' \
+  'http://localhost:8000/api/v1/courses/8a319d73-254c-4220-8a93-85ea7ec44cf9' \
+  -H 'host: localhost:8000' \
+  -H 'accept: */*' \
+  -H 'accept-encoding: gzip, deflate' \
+  -H 'connection: keep-alive' \
+  -H 'user-agent: python-httpx/0.28.1' \
+  -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTExLTA5VDA3OjMwOjQ2LjU0NTE5MCIsInVzZXJfaWQiOiI1M2NjMjJlOS01MWI5LTRkMjQtODc4Ni1lMjhlZjNhODY3YjgifQ.3DLbVTa_Ex0DXhi_9QOLHXyYHi4axioGqkZlN-DPJMo' \
+  -H 'content-length: 316' \
+  -H 'content-type: application/json' \
+  -d '{"title":"Religious gas hair air Mr the professional.","maxScore":82,"minScore":17,"description":"Time thought sit so. Environment create police near.\nEdge baby player forward community above join.\nPicture military always. There hit loss traditional. Real whatever drug himself officer.","estimatedTime":"5 weeks"}'
