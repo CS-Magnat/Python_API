@@ -1,0 +1,11 @@
+curl -X 'POST' \
+  'http://localhost:8000/api/v1/courses' \
+  -H 'host: localhost:8000' \
+  -H 'accept: */*' \
+  -H 'accept-encoding: gzip, deflate' \
+  -H 'connection: keep-alive' \
+  -H 'user-agent: python-httpx/0.28.1' \
+  -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTExLTEwVDEzOjE2OjM1LjI2NDAzNCIsInVzZXJfaWQiOiJlYmEwYTVhOC1kNGMzLTQ4ZTgtYjQ2Ni05OGNiYThkODVmNzMifQ.dB7e3Lr6-pMAyCjA5pP4TNcrZH15vdKynXvZwRHe23U' \
+  -H 'content-length: 398' \
+  -H 'content-type: application/json' \
+  -d '{"title":"Product they under travel.","maxScore":51,"minScore":6,"description":"Maybe take time early wife. Congress administration note analysis respond over pressure. Company which financial where the process. Run dark parent they line final shoulder form.","estimatedTime":"4 weeks","previewFileId":"3ecdb9c2-5c82-47c1-8150-f7a70ba7f1ab","createdByUserId":"eba0a5a8-d4c3-48e8-b466-98cba8d85f73"}'

@@ -1,0 +1,11 @@
+curl -X 'PATCH' \
+  'http://localhost:8000/api/v1/courses/ba8c33f6-e8b5-4529-85fd-60db9cc106e0' \
+  -H 'host: localhost:8000' \
+  -H 'accept: */*' \
+  -H 'accept-encoding: gzip, deflate' \
+  -H 'connection: keep-alive' \
+  -H 'user-agent: python-httpx/0.28.1' \
+  -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTExLTEwVDEzOjE2OjM0Ljk5MjMwMyIsInVzZXJfaWQiOiI3NjgyYjJkZi00YmE1LTQ1NjEtYTI4MC05YmQ0NmVmMmQwYTYifQ.F_B23SkamQMT_V-dn6tXPXEtTGS96WNDForvHT64J2k' \
+  -H 'content-length: 225' \
+  -H 'content-type: application/json' \
+  -d '{"title":"Federal something wide measure company.","maxScore":98,"minScore":10,"description":"White attention glass person along door study. Character money will side environmental none street add.","estimatedTime":"2 weeks"}'

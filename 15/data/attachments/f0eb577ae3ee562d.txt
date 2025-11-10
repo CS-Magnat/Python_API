@@ -1,0 +1,11 @@
+curl -X 'POST' \
+  'http://localhost:8000/api/v1/courses' \
+  -H 'host: localhost:8000' \
+  -H 'accept: */*' \
+  -H 'accept-encoding: gzip, deflate' \
+  -H 'connection: keep-alive' \
+  -H 'user-agent: python-httpx/0.28.1' \
+  -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTExLTEwVDEzOjE2OjM3LjYyOTAyNiIsInVzZXJfaWQiOiI5OWM1YTlhMy1hNzE2LTQ1ZGYtYTNhNy0yZDkwOTdmNTQ3N2QifQ.gAFDABAZ98x8xvmbeIJck8lxPmFrdBDwWtwZ8dGM-Rg' \
+  -H 'content-length: 389' \
+  -H 'content-type: application/json' \
+  -d '{"title":"Later relate relate important because.","maxScore":69,"minScore":3,"description":"Course unit dinner support say message.\nAlong art visit next per soon. Follow others instead arm prevent end. Specific question interview future owner wait.","estimatedTime":"8 weeks","previewFileId":"4c2a049a-9e81-4ee4-be2f-cb676d9a41d0","createdByUserId":"99c5a9a3-a716-45df-a3a7-2d9097f5477d"}'

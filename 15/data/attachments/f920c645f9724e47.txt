@@ -1,0 +1,23 @@
+INFO     HTTP_CLIENT:event_hooks.py:26 Make POST request to http://localhost:8000/api/v1/users
+INFO     HTTP_CLIENT:event_hooks.py:35 Got response 200 OK from http://localhost:8000/api/v1/users
+INFO     HTTP_CLIENT:event_hooks.py:26 Make POST request to http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_CLIENT:event_hooks.py:35 Got response 200 OK from http://localhost:8000/api/v1/authentication/login
+INFO     HTTP_CLIENT:event_hooks.py:26 Make POST request to http://localhost:8000/api/v1/files
+INFO     HTTP_CLIENT:event_hooks.py:35 Got response 200 OK from http://localhost:8000/api/v1/files
+INFO     HTTP_CLIENT:event_hooks.py:26 Make POST request to http://localhost:8000/api/v1/courses
+INFO     HTTP_CLIENT:event_hooks.py:35 Got response 200 OK from http://localhost:8000/api/v1/courses
+INFO     HTTP_CLIENT:event_hooks.py:26 Make POST request to http://localhost:8000/api/v1/exercises
+INFO     HTTP_CLIENT:event_hooks.py:35 Got response 200 OK from http://localhost:8000/api/v1/exercises
+INFO     HTTP_CLIENT:event_hooks.py:26 Make GET request to http://localhost:8000/api/v1/exercises/7dd617f8-8271-43ca-8c85-fe3ff770887d
+INFO     HTTP_CLIENT:event_hooks.py:35 Got response 200 OK from http://localhost:8000/api/v1/exercises/7dd617f8-8271-43ca-8c85-fe3ff770887d
+INFO     BASE_ASSERTIONS:base.py:18 Check that response status code equals to 200
+INFO     EXERCISES_ASSERTIONS:exercises.py:29 Check exercise
+INFO     BASE_ASSERTIONS:base.py:38 Check that "title" equals to Answer sure cost ask.
+INFO     BASE_ASSERTIONS:base.py:38 Check that "course_id" equals to b9b54fea-d6d1-4b60-a067-ae745960299d
+INFO     BASE_ASSERTIONS:base.py:38 Check that "max_score" equals to 77
+INFO     BASE_ASSERTIONS:base.py:38 Check that "min_score" equals to 25
+INFO     BASE_ASSERTIONS:base.py:38 Check that "order_index" equals to 88
+INFO     BASE_ASSERTIONS:base.py:38 Check that "description" equals to Here imagine recognize both blood. Ask director item form property lawyer mind.
+Thought speech lot wind approach seem get. Find west discussion travel table growth. Score culture upon.
+INFO     BASE_ASSERTIONS:base.py:38 Check that "estimated_time" equals to 2 weeks
+INFO     SCHEMA_ASSERTIONS:schema.py:19 Validating JSON schema

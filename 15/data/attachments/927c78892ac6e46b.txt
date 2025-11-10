@@ -1,0 +1,11 @@
+curl -X 'POST' \
+  'http://localhost:8000/api/v1/courses' \
+  -H 'host: localhost:8000' \
+  -H 'accept: */*' \
+  -H 'accept-encoding: gzip, deflate' \
+  -H 'connection: keep-alive' \
+  -H 'user-agent: python-httpx/0.28.1' \
+  -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTExLTEwVDEzOjE2OjM3LjM1NTM1MyIsInVzZXJfaWQiOiJiODBmYzUzMi01MzYzLTQ4OGEtYWMxMC00NmJjMjgzYWNhNTUifQ.MYTohoy_3CtAdN0ygCE_4xcwxEc7YpHxRYa_HSfA4x8' \
+  -H 'content-length: 360' \
+  -H 'content-type: application/json' \
+  -d '{"title":"Remain capital what.","maxScore":69,"minScore":19,"description":"Ahead color future cold. Determine idea site seek respond should theory herself. Story less wall fly. Congress hit only do research do reduce go.","estimatedTime":"8 weeks","previewFileId":"eeee6641-3a77-444c-9711-d32ba4c2f54d","createdByUserId":"b80fc532-5363-488a-ac10-46bc283aca55"}'

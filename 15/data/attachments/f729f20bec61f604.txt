@@ -1,0 +1,11 @@
+curl -X 'POST' \
+  'http://localhost:8000/api/v1/courses' \
+  -H 'host: localhost:8000' \
+  -H 'accept: */*' \
+  -H 'accept-encoding: gzip, deflate' \
+  -H 'connection: keep-alive' \
+  -H 'user-agent: python-httpx/0.28.1' \
+  -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTExLTEwVDEzOjE2OjMzLjg0OTgzMiIsInVzZXJfaWQiOiIwOGQxOWI3Ni03NmEwLTRhZWYtYjJiNi02ZjIzYWEzZGZmMmIifQ.8EhMflmw-yhALiJnVFp46Mty9P16g4T59L-VDGj2kWw' \
+  -H 'content-length: 413' \
+  -H 'content-type: application/json' \
+  -d '{"title":"Each cover whether be.","maxScore":66,"minScore":13,"description":"Particularly plan recognize discussion. Play evening view newspaper modern.\nEstablish home throw other soon stage. Maybe increase baby give.\nThis beat try class level rise. Make win every great.","estimatedTime":"4 weeks","previewFileId":"455b52d8-15f9-412f-9c11-b82848125a95","createdByUserId":"08d19b76-76a0-4aef-b2b6-6f23aa3dff2b"}'

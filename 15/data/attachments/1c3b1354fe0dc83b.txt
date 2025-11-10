@@ -1,0 +1,11 @@
+curl -X 'POST' \
+  'http://localhost:8000/api/v1/courses' \
+  -H 'host: localhost:8000' \
+  -H 'accept: */*' \
+  -H 'accept-encoding: gzip, deflate' \
+  -H 'connection: keep-alive' \
+  -H 'user-agent: python-httpx/0.28.1' \
+  -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTExLTEwVDEzOjE2OjM4LjUzOTg5OSIsInVzZXJfaWQiOiJhMTkzYWJlZS05ODE0LTRkNDItYTIwNC1lOWE0Yzc3NzcyZDkifQ.JJu7A9D9zcPZUW9o6QMnc0-44W6wSDZnLYKDVDyR3y8' \
+  -H 'content-length: 369' \
+  -H 'content-type: application/json' \
+  -d '{"title":"Yourself true they news history.","maxScore":59,"minScore":14,"description":"College raise strong use network action stop. How positive add gun value education.\nLoss fire value capital. Attack mind rule full hot PM in.","estimatedTime":"6 weeks","previewFileId":"77929c6b-f991-455c-9809-fcbaceec436d","createdByUserId":"a193abee-9814-4d42-a204-e9a4c77772d9"}'

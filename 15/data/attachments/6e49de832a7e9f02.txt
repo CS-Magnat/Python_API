@@ -1,0 +1,11 @@
+curl -X 'POST' \
+  'http://localhost:8000/api/v1/courses' \
+  -H 'host: localhost:8000' \
+  -H 'accept: */*' \
+  -H 'accept-encoding: gzip, deflate' \
+  -H 'connection: keep-alive' \
+  -H 'user-agent: python-httpx/0.28.1' \
+  -H 'authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHBpcmUiOiIyMDI1LTExLTEwVDEzOjE2OjM0Ljk5MjMwMyIsInVzZXJfaWQiOiI3NjgyYjJkZi00YmE1LTQ1NjEtYTI4MC05YmQ0NmVmMmQwYTYifQ.F_B23SkamQMT_V-dn6tXPXEtTGS96WNDForvHT64J2k' \
+  -H 'content-length: 404' \
+  -H 'content-type: application/json' \
+  -d '{"title":"Grow strategy doctor need production democratic.","maxScore":61,"minScore":14,"description":"Military myself feeling certain home hold. Generation fill key member especially prepare myself. For leg modern who you method. Cause both really exactly assume.","estimatedTime":"4 weeks","previewFileId":"2691816b-84c7-429e-8538-fdbf923d0c90","createdByUserId":"7682b2df-4ba5-4561-a280-9bd46ef2d0a6"}'
